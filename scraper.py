@@ -1,3 +1,6 @@
+import requests
+
+
 ca_cities_dict = {
                 "Bakersfield": "bakersfield",
                 "Chico": "chico",
@@ -43,14 +46,52 @@ def make_url(city, search_terms):
 
 #implement city lookup of all city names in CL. How to handle typos? Eventually this will not be an input() scenario.
 #   https://geo.craigslist.org/iso/us/ca
+    ca_cities_dict = {
+                    "Bakersfield": "bakersfield",
+                    "Chico": "chico",
+                    "Corcoran": "hanford",
+                    "Fresno": "fresno",
+                    "Gold Country": "goldcountry",
+                    "Hanford": "hanford",
+                    "Humboldt County": "humboldt",
+                    "Imperial County": "imperial",
+                    "Inland Empire": "inlandempire",
+                    "Lake Tahoe": "reno",
+                    "Los Angeles": "losangeles",
+                    "Madera": "fresno",
+                    "Mendocino County": "mendocino",
+                    "Merced": "merced",
+                    "Modesto": "modesto",
+                    "Monterey Bay": "monterey",
+                    "Orange County": "orangecounty",
+                    "Palm Springs": "palmsprings",
+                    "Redding": "redding",
+                    "Reno": "reno",
+                    "Riverside": "inlandempire",
+                    "Sacramento": "sacramento",
+                    "San Bernardino": "inlandempire",
+                    "San Diego": "sandiego",
+                    "San Francisco": "sfbay",
+                    "San Luis Obispo": "slo",
+                    "Santa Barbara": "santabarbara",
+                    "Santa Maria": "santamaria",
+                    "Siskiyou": "siskiyou",
+                    "Stockton": "stockton",
+                    "Susanville": "susanville",
+                    "Sutter": "yubasutter",
+                    "Tulare": "visalia",
+                    "Ventura": "ventura",
+                    "Visalia": "visalia",
+                    "Yuba": "yubasutter",
+    }
 
-
-    return f"https://{city}.craigslist.org/search/mcy?format=rss&query={'+'.join([term for term in search_terms.lower().split()])}"
+    return f"https://{ca_cities_dict[city]}.craigslist.org/search/mcy?format=rss&query={'+'.join([term for term in search_terms.lower().split()])}"
 
 
 # make search terms a parameter of the module. e.g. "scrape("BMW 250 Series")"
 
 # (optional) assign each term to a category (make, model, etc.)
+
 
 # collect CL RSS feed using search terms
 # store feed into memory
