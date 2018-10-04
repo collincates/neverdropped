@@ -103,10 +103,10 @@ def get_urls_from_rss(rss_feed_url):
     "Returns a list of posting URLs from a CL RSS feed"
     cl_rss = requests.get(rss_feed_url)
     soup = BeautifulSoup(cl_rss.text, 'html.parser')
-    urls = [soup.find('rdf:li')['rdf:resource'] \
+    urls = [list_item['rdf:resource'] \
                 for list_item in soup.find_all('rdf:li')]
     print('got list of urls')
-    return urls_list
+    return urls
 
 
 def parse(posting_url):
@@ -155,6 +155,7 @@ def parse(posting_url):
 def runit(rss_feed_url):
     url_list = get_urls_from_rss(rss_feed_url)
     for url in url_list:
+
         print(parse(url))
         time.sleep(15)
 #

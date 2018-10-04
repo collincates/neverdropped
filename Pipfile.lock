@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "05090fde3c55d631edb58102cc7b0a43a33ac9daf1f0ca5d396d0fccfd158c6e"
+            "sha256": "a0c8d6ef5368772221739d7c470a17aa1e0488df77dab3241f7e5311468f976c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -45,6 +45,13 @@
                 "sha256:684a38a6f903c1d71d6d5fac066b58d7768af4de2b832e426ec79c30daa94a16"
             ],
             "version": "==2.7"
+        },
+        "python-wordpress-xmlrpc": {
+            "hashes": [
+                "sha256:e15a8e9aca16db169369e5967299c29965570ed83c7c3ad418ed59b5ad1471bd"
+            ],
+            "index": "pypi",
+            "version": "==2.3"
         },
         "requests": {
             "hashes": [
