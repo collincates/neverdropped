@@ -12,12 +12,13 @@ password = '0wlL prfE pqjU 5ru0 OREt oa3V' #base64 encoded version of my pass
 
 wp = Client(wordpress_url, username, password)
 
-def new_wp_post(posting_data):
+def new_wp_post(posting_data, post_status='publish'):
     # check if a cl_id already exists in the WP DB. If so, pass.
     tag_list = [tag.name for tag in [entry for entry in wp.call(taxonomies.GetTerms('post_tag'))]]
     if posting_data['cl_id'] in tag_list:
         print('{} already in database'.format(posting_data['cl_id']))
         pass
+    # if it's a new cl_id, create a blog post for it.
     else:
         post = WordPressPost()
         post.title = posting_data['title']
@@ -27,16 +28,17 @@ def new_wp_post(posting_data):
             'post_tag': [posting_data['cl_id']]
         }
         print('this work?')
-        post.post_status = posting_data['post_status']
+        post.post_status = post_status
         wp.call(NewPost(post))
 
 
-        # 'posting_id': posting_id,
-        # 'title': title,
+        #               'cl_id': cl_id,
+        #               'title': title,
         # 'price': price,
         # 'location': location,
-        # 'body_text': body_text,
+        #               'body_text': body_text,
         # 'when_posted': when_posted,
         # 'original url': orig_url
 
-new_wp_post({'title': 'new one', 'body_text': 'this isthe body text', 'post_status': 'publish', 'cl_id': '012398'})
+if __name__ == "__main__":
+    new_wp_post({'title': 'new one', 'body_text': 'this isthe body text', 'post_status': 'publish', 'cl_id': '012396'})
