@@ -54,7 +54,15 @@ def _get_urls_from_rss(rss_feed_url):
     soup = BeautifulSoup(cl_rss.text, 'html.parser')
     urls = [list_item['rdf:resource'] \
                 for list_item in soup.find_all('rdf:li')]
-    print('got list of urls')
+    #print('got list of urls')
+    if len(urls) == 0:
+        print("Nothing comes up in that area for those terms.")
+        exit(0)
+    elif len(urls) == 1:
+        print("\n\nFound one match...\n\n")
+    elif len(urls) > 1:
+        print(f"\n\nFound {len(urls)} matches...\n\n")
+
     return urls
 
 
@@ -104,7 +112,7 @@ def parse(posting_url):
 def scrape(rss_feed_url):
     url_list = _get_urls_from_rss(rss_feed_url)
     data = []
-    for url in url_list[0:3]:
+    for url in url_list:
 
         print(parse(url))
         data.append(parse(url))

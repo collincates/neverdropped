@@ -1,4 +1,4 @@
-from scraper import make_rss, parse, runit
+from scraper import _make_rss, parse, scrape
 from wordpresspost import new_wp_post
 
 

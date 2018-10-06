@@ -1,0 +1,9 @@
+-remove qr code text
+
+-reformat info, what's important?
+
+-add pictures to posts
+
+-add other states/counties dictionaries
+
+-state lookup, then county? check errors in a loop so you can get 2nd attempt

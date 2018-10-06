@@ -1,1 +1,1 @@
-python3.6 wordpresspost.py
+python3.6 controller.py
