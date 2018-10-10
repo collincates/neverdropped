@@ -80,22 +80,23 @@ def parse(posting_url):
     try:
         price = soup.find(class_='price').text
     except AttributeError:
-        price = "null"
+        price = "No price given."
 
     try:
         location = soup.find('small').text.strip(' () ')
     except AttributeError:
-        location = "null"
+        location = "No location given in original post."
 
     try:
-        body_text = soup.find(id='postingbody').text #contents[2::]
+        body_text = soup.find(id='postingbody').text.replace("\n\nQR Code Link to This Post\n\n\n", '') #contents[2::]
     except AttributeError:
-        body_text = "null"
+        body_text = "No body text in original post."
 
     when_posted = soup.find('p', id='display-date') \
                             .find('time', class_='date timeago')['datetime']
 
-    #images = soup.find_all('images')
+    images = [a['href'] for a in soup.find_all('a', class_='thumb', href=True)]
+
     orig_url = posting_url
 
     return {
@@ -105,14 +106,14 @@ def parse(posting_url):
     'location': location,
     'body_text': body_text,
     'when_posted': when_posted,
-    'original url': orig_url
-    #images!!!!
+    'original url': orig_url,
+    'images': images,
     }
 
 def scrape(rss_feed_url):
     url_list = _get_urls_from_rss(rss_feed_url)
     data = []
-    for url in url_list:
+    for url in url_list[0:1]:
 
         print(parse(url))
         data.append(parse(url))

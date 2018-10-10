@@ -1,7 +1,10 @@
 from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.methods.posts import NewPost
-from wordpress_xmlrpc.methods import taxonomies
-
+from wordpress_xmlrpc.compat import xmlrpc_client
+from wordpress_xmlrpc.methods import taxonomies, media
+import requests
+import time
+import base64
 
 # from wordpress_xmlrpc.methods.users import GetUserInfo
 
@@ -23,12 +26,26 @@ def new_wp_post(posting_data, post_status='publish'):
         post = WordPressPost()
         post.title = posting_data['title']
         post.content = posting_data['body_text']
-        print('{} this work?'.format(posting_data['cl_id']))
+        # print('{} this work?'.format(posting_data['cl_id']))
         post.terms_names = {
             'post_tag': [posting_data['cl_id']]
         }
-        print('this work?')
+        # print('this work?')
         post.post_status = post_status
+
+        # images upload
+        for img in posting_data['images']:
+            time.sleep(5)
+            data = {
+                'name': '{}.jpg'.format(posting_data['cl_id']),
+                'type': 'image/jpeg',
+            }
+            data['bits'] = xmlrpc_client.Binary(base64.b64encode(requests.get(img).content))
+
+            response = wp.call(media.UploadFile(data))
+            attachment_id = response['id']
+        post.thumbnail = attachment_id
+
         wp.call(NewPost(post))
 
 
