@@ -106,7 +106,7 @@ def parse(posting_url):
     'location': location,
     'body_text': body_text,
     'when_posted': when_posted,
-    'original url': orig_url,
+    'original_url': orig_url,
     'images': images,
     }
 
@@ -117,7 +117,7 @@ def scrape(rss_feed_url):
 
         print(parse(url))
         data.append(parse(url))
-        time.sleep(15)
+        time.sleep(5)
     return data
 
 
