@@ -121,18 +121,14 @@ def scrape(rss_feed_url):
     return data
 
 
-# any repeated items are sent to a discarded set
+
 # any items that do not appear in the RSS feed and haven't been sent to the main DB
 #     or discarded set are added to the expired/closed/sold set
 #
 #
 # update DB with the above "statuses" on each listing
 # OR
-# update dict that organizes each listing into {current: x, expired/closed/sold: y, discarded/reposts: z}
-# save into CSV file, or JSON array, or other DB
 #
-# scraper module returns set() of listings in the {current: x} category
-#     (other categories are still added to the DB file, etc. as above)
 
 if __name__ == "__main__":
     for city_abbrev in ca_cities_dict:

@@ -5,7 +5,7 @@ from wordpress_xmlrpc.methods import taxonomies, media
 import requests
 import time
 import base64
-import bleach
+
 
 # from wordpress_xmlrpc.methods.users import GetUserInfo
 
@@ -64,7 +64,10 @@ def new_wp_post(posting_data, post_status='publish'):
 
             wp_db_img_links.append(response['url'])
 
-        html_formatted_links = list(map(lambda link: f"<img src={link}>", wp_db_img_links)) # height={height} width={width}>", wp_db_img_links))
+        html_formatted_links = list(
+            map(lambda link: f"<img src={link}>", wp_db_img_links)
+            ) # height={height} width={width}>", wp_db_img_links))
+
         print(html_formatted_links)
 
 
