@@ -83,7 +83,9 @@
   "https://nwct.craigslist.org",
   "//newyork.craigslist.org/fct/"
  ],
- "DE": "https://delaware.craigslist.org/",
+ "DE": [
+  "https://delaware.craigslist.org/"
+ ],
  "FL": [
   "https://daytona.craigslist.org",
   "https://keys.craigslist.org",
@@ -119,7 +121,9 @@
   "https://statesboro.craigslist.org",
   "https://valdosta.craigslist.org"
  ],
- "HI": "https://delaware.craigslist.org/",
+ "HI": [
+  "https://honolulu.craigslist.org/"
+ ],
  "IA": [
   "https://ames.craigslist.org",
   "https://cedarrapids.craigslist.org",
@@ -218,7 +222,9 @@
   "https://westmd.craigslist.org",
   "//washingtondc.craigslist.org/mld/"
  ],
- "ME": "https://delaware.craigslist.org/",
+ "ME": [
+  "https://maine.craigslist.org/"
+ ],
  "MI": [
   "https://annarbor.craigslist.org",
   "https://battlecreek.craigslist.org",
@@ -309,7 +315,9 @@
   "https://scottsbluff.craigslist.org",
   "https://siouxcity.craigslist.org"
  ],
- "NH": "https://delaware.craigslist.org/",
+ "NH": [
+  "https://nh.craigslist.org/"
+ ],
  "NJ": [
   "https://cnj.craigslist.org",
   "https://jerseyshore.craigslist.org",
@@ -411,7 +419,9 @@
   "https://williamsport.craigslist.org",
   "https://york.craigslist.org"
  ],
- "RI": "https://delaware.craigslist.org/",
+ "RI": [
+  "https://providence.craigslist.org/"
+ ],
  "SC": [
   "https://charleston.craigslist.org",
   "https://columbia.craigslist.org",
@@ -489,7 +499,9 @@
   "https://winchester.craigslist.org",
   "//washingtondc.craigslist.org/nva/"
  ],
- "VT": "https://delaware.craigslist.org/",
+ "VT": [
+  "https://vermont.craigslist.org/"
+ ],
  "WA": [
   "https://bellingham.craigslist.org",
   "https://kpr.craigslist.org",
@@ -528,5 +540,7 @@
   "https://swv.craigslist.org",
   "https://wv.craigslist.org"
  ],
- "WY": "https://delaware.craigslist.org/"
+ "WY": [
+  "https://wyoming.craigslist.org/"
+ ]
 }

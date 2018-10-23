@@ -17,19 +17,23 @@ for state, abbv in us_states.items():
         county_urls = [i['href'] for i in soup.find('div', class_='geo-site-list-container').find_all('a')]
     except AttributeError:
         if abbv == 'DE':
-            county_urls = 'https://delaware.craigslist.org/'
+            county_urls = ['https://delaware.craigslist.org/']
         if abbv == 'HI':
-            county_urls = 'https://honolulu.craigslist.org/'
+            county_urls = ['https://honolulu.craigslist.org/']
         if abbv == 'ME':
-            county_urls = 'https://honolulu.craigslist.org/'
+            county_urls = ['https://maine.craigslist.org/']
         if abbv == 'NH':
+            county_urls = ['https://nh.craigslist.org/']
         if abbv == 'RI':
+            county_urls = ['https://providence.craigslist.org/']
         if abbv == 'VT':
+            county_urls = ['https://vermont.craigslist.org/']
         if abbv == 'WY':
+            county_urls = ['https://wyoming.craigslist.org/']
 
     united_states[abbv] = county_urls
 
 # print(json.dumps(united_states, indent=1, sort_keys=True))
 
-with open('saved.txt', 'w') as file:
+with open('us_sites.txt', 'w') as file:
     file.write(json.dumps(united_states, indent=1, sort_keys=True))
