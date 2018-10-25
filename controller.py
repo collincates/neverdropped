@@ -12,6 +12,8 @@ random_sleep = round(uniform(6, 8), 1)
 for make, models in QUERIES.items():
     for model in models:
         search_terms = f"{make}+{model}"    #what if either make or model are multiple words? This will not add '+' between them in these cases
+        make = make
+        model = model
         print(f"\nSearching for {search_terms}\n")
 
         for area_name, area_urls in URLS_UK.items():
@@ -28,11 +30,6 @@ for make, models in QUERIES.items():
             for url in area_urls:
                 # time.sleep(random_sleep)
                 print(_make_rss_loop(url, search_terms))
-
-# for url in URLS_CAN:
-
-# for url in URLS_USA:
-
 """
 
 
@@ -47,8 +44,13 @@ for post in cl_posts:
     new_wp_post(post)
 
 # repeat the below at certain time(s) of day
-
 # datetime setting as variable
+
+daily_scrape = Scraper()
+daily_scrape.get_RSS()
+daily_scrape.get_URLS()
+daily_scrape.make_WP_posts()
+daily.scrape.die()
 
 
 # start with UK
@@ -63,10 +65,6 @@ for post in cl_posts:
 # then with CAN WEST
 
 # scrape in timezones?
-
-# search all JSON search terms for a timezone, then move onto new timezone
-# OR search all JSON search terms in all timezones, then move onto new search terms
-
 
 
 
