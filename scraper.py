@@ -40,11 +40,13 @@ ca_cities_dict = {
                 "Visalia": "visalia",
                 "Yuba": "yubasutter",
 }
-#implement city lookup of all city names in CL. How to handle typos? Eventually this will not be an input() scenario.
-#   https://geo.craigslist.org/iso/us/ca
 
-def _make_rss(city, search_terms):
+
+def _make_rss_single_search(city, search_terms):
     return f"https://{ca_cities_dict[city]}.craigslist.org/search/mcy?format=rss&query={'+'.join([term for term in search_terms.lower().split()])}"
+
+def _make_rss_loop(city_url, search_terms):
+    return f"{city_url}/search/mcy?format=rss&query={search_terms.lower()}"
 
 
 # return RSS feed entries that contain ALL of the search terms, and only ALL terms
@@ -57,7 +59,6 @@ def _get_urls_from_rss(rss_feed_url):
     #print('got list of urls')
     if len(urls) == 0:
         print("Nothing comes up in that area for those terms.")
-        exit(0)
     elif len(urls) == 1:
         print("\n\nFound one match...\n\n")
     elif len(urls) > 1:
@@ -67,43 +68,70 @@ def _get_urls_from_rss(rss_feed_url):
 
 
 def parse(posting_url):
-    #listing title, the location, price, the body text, the images at highest resolution, and the link to the original post.
+
     cl_posting = requests.get(posting_url)
     soup = BeautifulSoup(cl_posting.text, 'html.parser')
 
+
+    # Original CL Posting ID
     cl_id = soup.find('div', class_='postinginfos') \
                             .find('p', class_='postinginfo') \
                             .getText().lstrip("post id: ")
 
+    # Title
     title = soup.find(id='titletextonly').text
 
+    # Price
     try:
         price = soup.find(class_='price').text
     except AttributeError:
         price = "No price given."
 
+    # Location
     try:
         location = soup.find('small').text.strip(' () ')
     except AttributeError:
-        location = "No location given in original post."
+        location = "No location entered into original post."
 
+
+    # Make
+    try:
+        make = soup.find
+    except AttributeError:
+        make = "Make unknown."
+
+    # Model
+    try:
+        model = soup.find
+    except AttributeError:
+        model = "Model unknown."
+
+
+    # Body Text
     try:
         body_text = soup.find(id='postingbody').text.replace("\n\nQR Code Link to This Post\n\n\n", '') #contents[2::]
     except AttributeError:
         body_text = "No body text in original post."
 
+    # Posting Date
     when_posted = soup.find('p', id='display-date') \
                             .find('time', class_='date timeago')['datetime']
 
+    # Images
     images = [a['href'] for a in soup.find_all('a', class_='thumb', href=True)]
 
+
+    # Original URL
     orig_url = posting_url
+
 
     return {
     'cl_id': cl_id,
     'title': title,
     'price': price,
     'location': location,
+    # 'make': make,
+    # 'model': model,
     'body_text': body_text,
     'when_posted': when_posted,
     'original_url': orig_url,
@@ -113,7 +141,7 @@ def parse(posting_url):
 def scrape(rss_feed_url):
     url_list = _get_urls_from_rss(rss_feed_url)
     data = []
-    for url in url_list[0:1]:
+    for url in url_list[0:2]:
 
         print(parse(url))
         data.append(parse(url))
@@ -127,7 +155,6 @@ def scrape(rss_feed_url):
 #
 #
 # update DB with the above "statuses" on each listing
-# OR
 #
 
 if __name__ == "__main__":

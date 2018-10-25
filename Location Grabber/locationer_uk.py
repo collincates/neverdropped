@@ -20,5 +20,5 @@ for a in soup.find('div', class_='geo-site-list-container').find_all('a'):
 # print(len(uk))
 
 
-with open('uk_sites.txt', 'w') as file:
+with open('sites_uk.txt', 'w') as file:
     file.write(json.dumps(uk, indent=1, sort_keys=True))

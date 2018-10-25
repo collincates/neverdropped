@@ -4,7 +4,7 @@ from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import taxonomies, media
 import requests
 import time
-import base64
+# import base64
 
 
 # from wordpress_xmlrpc.methods.users import GetUserInfo
@@ -16,7 +16,7 @@ password = '0wlL prfE pqjU 5ru0 OREt oa3V' #base64 encoded version of my pass
 
 wp = Client(wordpress_url, username, password)
 
-def new_wp_post(posting_data, post_status='publish'):
+def new_wp_post(posting_data, post_status='draft'):
     # check if a cl_id already exists in the WP DB. If so, pass.
     tag_list = [tag.name for tag in [entry for entry in wp.call(taxonomies.GetTerms('post_tag'))]]
     if posting_data['cl_id'] in tag_list:
@@ -57,11 +57,6 @@ def new_wp_post(posting_data, post_status='publish'):
             else:
                 pass
 
-            # print(GetPost(post).post_id)
-            # print(response['parent'])
-            # print(post._def['id'])
-            # response['parent'] = GetPost(post).post_id
-
             wp_db_img_links.append(response['url'])
 
         html_formatted_links = list(
@@ -87,16 +82,14 @@ def new_wp_post(posting_data, post_status='publish'):
         )
 
         post.terms_names = {
-            'post_tag': [posting_data['cl_id']]
-            # 'post_category': [posting_data[dict comp for location]]
+            # 'post_category': [posting_data['make']]   bike make
+            'post_tag': [posting_data['cl_id'], posting_data['location']]
+            # 'post_tag': [posting_data['other']] other / cl other
+            # 'post_tag': [posting_data['other keywords']] other / other keywords   will this be done by hand?
         }
         post.post_status = post_status
 
         post_ident = wp.call(NewPost(post))
-
-
-
-
 
 
 

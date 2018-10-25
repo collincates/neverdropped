@@ -35,5 +35,5 @@ for state, abbv in us_states.items():
 
 # print(json.dumps(united_states, indent=1, sort_keys=True))
 
-with open('us_sites.txt', 'w') as file:
+with open('sites_us.txt', 'w') as file:
     file.write(json.dumps(united_states, indent=1, sort_keys=True))
