@@ -69,11 +69,29 @@ class CLPostObject(object):
 
 
 class CLRSSFeed(object):
-    def __init__(self, city_url):
+    def __init__(self, city_url, search_terms):
         self.city_url = city_url
+        self.search_terms = search_terms
+        self.rss_feed = f"{self.city_url}/search/mcy?format=rss&query={self.search_terms.lower()}"
 
-    def make_rss_single_search(city, search_terms):
-        return f"https://{ca_cities_dict[city]}.craigslist.org/search/mcy?format=rss&query={'+'.join([term for term in search_terms.lower().split()])}"
 
-    def make_rss_loop(city_url, search_terms):
-        return f"{city_url}/search/mcy?format=rss&query={search_terms.lower()}"
+class DailyScrape(object):
+    def __init__(self):
+        self.rss_feeds_to_scrape = set()
+        self.parsed_cl_postings = set()
+
+    def get_RSS_feeds(self):
+        #MAKE THIS A LOOP OF ALL INSTANCES OF CLRSSFeed
+        #APPEND OR ADD TO self.rss_feeds_to_scrape
+        #HOW DOES IT KNOW WHAT SCOPE TO CHECK? WHERE ARE THE FEED OBJECTS?
+
+    def get_CL_post_URLS(self):
+
+
+    def scrape_CL_post_data(self):
+
+
+    def make_WP_posts(self):
+
+
+    def die(self):

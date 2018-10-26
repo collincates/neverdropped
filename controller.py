@@ -46,9 +46,10 @@ for post in cl_posts:
 # repeat the below at certain time(s) of day
 # datetime setting as variable
 
-daily_scrape = Scraper()
-daily_scrape.get_RSS()
-daily_scrape.get_URLS()
+daily_scrape = DailyScrape()
+daily_scrape.get_RSS_feeds()
+daily_scrape.get_CL_post_URLS()
+daily_scrape.scrape_CL_post_data()
 daily_scrape.make_WP_posts()
 daily.scrape.die()
 
