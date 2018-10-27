@@ -25,13 +25,11 @@ for post in cl_posts:
 
 if __name__ == "__main__":
 
-    daily_scrape = DailyScrape()
-    daily_scrape.get_rss_feeds()
-    for rss_object in daily_scrape.rss_objects_to_scrape:
-        print(rss_object.rss_url)
+    cl_factory = CLFactory()
+    cl_factory.get_rss_feeds()
+    cl_factory.get_cl_posts_from_rss_feeds()
+
 # todo
-# daily_scrape.get_cl_posts_from_rss()
-# daily_scrape.scrape_CL_post_data()
 # daily_scrape.make_WP_posts()
 # daily.scrape.die()
 
