@@ -8,6 +8,7 @@ from queries import QUERIES
 
 random_sleep = round(uniform(6, 8), 1)
 
+seen_listings = set()
 
 class CLPostObject(object):
 
@@ -157,15 +158,21 @@ class CLFactory(object):
                         for list_item in soup.find_all('rdf:li')]
             if len(urls) == 0:
                 print(f"{rss_object.city_url} has no matches for {rss_object.make} {rss_object.model} today.")
+
             else:
                 for url in urls:
-                    # todo parse triggers when instantiating a PostObject().
-                    # implement parse before running.
+                    # This will reduce pings to the CL server by skipping over
+                    # anything that's already in the WP DB.
+                    cl_id = re.split("(\d+).html$", url)[1]
 
-                    # Where to sleep? Here? or within parse?
-                    print('parsing and appending')
-                    self.parsed_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
-                    print('finished parsing and appending')
+                    if cl_id in seen_listings:
+                        print(f"{cl_id} was already seen.")
+                        pass
+
+                    else:
+                        print('parsing and appending')
+                        self.parsed_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
+                        print('finished parsing and appending')
 
 
     def die(self):

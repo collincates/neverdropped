@@ -1,13 +1,6 @@
 import datetime
-# from scraper import _make_rss_single_search, parse, scrape
-# from wordpresspost import new_wp_post
-import time
-from random import uniform
 from CL_API import CLFactory
-#  from WP_API import WPFactory
-
-random_sleep = round(uniform(6, 8), 1)
-
+# from WP_API import WPFactory
 
 """
 city = input("Enter a city name: ")
@@ -24,15 +17,14 @@ for post in cl_posts:
 
 
 if __name__ == "__main__":
-
     cl_factory = CLFactory()
     cl_factory.get_rss_feeds()
     cl_factory.get_cl_posts_from_rss_feeds()
 
 # todo
-# daily_scrape.make_WP_posts()
-# daily.scrape.die()
-
+# wp_factory.make_WP_posts()
+# cl_factory.die()
+# wp_factory.die()
 
 
 
