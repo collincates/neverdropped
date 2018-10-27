@@ -1,6 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import time
+from constants import URLS_CAN, URLS_UK, URLS_USA, ALL_MAKES
+from queries import QUERIES
+
 
 class CLPostObject(object):
 
@@ -69,29 +72,56 @@ class CLPostObject(object):
 
 
 class CLRSSFeed(object):
-    def __init__(self, city_url, search_terms):
+    def __init__(self, city_url, make, model):
         self.city_url = city_url
-        self.search_terms = search_terms
-        self.rss_feed = f"{self.city_url}/search/mcy?format=rss&query={self.search_terms.lower()}"
+        self.make = make
+        self.model = model
+        self.rss_url = f"{self.city_url}/search/mcy?format=rss&query={self.make.lower()}+{self.model.lower()}"
 
 
 class DailyScrape(object):
     def __init__(self):
-        self.rss_feeds_to_scrape = set()
-        self.parsed_cl_postings = set()
+        self.rss_objects_to_scrape = []
+        self.parsed_cl_postings = []
 
     def get_RSS_feeds(self):
-        #MAKE THIS A LOOP OF ALL INSTANCES OF CLRSSFeed
-        #APPEND OR ADD TO self.rss_feeds_to_scrape
-        #HOW DOES IT KNOW WHAT SCOPE TO CHECK? WHERE ARE THE FEED OBJECTS?
+        # todo: locations to search as arguments? UK=True, USA=True, CAN=True ??
+        """
+        Concatenate CL URLS in module 'constants' with QUERIES RSS urls  .
+        Append all CLRSSFeed objects to this instance of DailyScrape().
+
+        This method does not hit the CL server. No sleep is required.
+
+        # get back to this if speed in an issue # search_terms = lambda make, model: [f"{make} {model}" for model in [model for model in models for [(make, models) for make, models in QUERIES.items()]]
+
+        """
+
+        for make, models in QUERIES.items():
+            for model in models:
+                # if UK == True:
+                for area_name, area_urls in URLS_UK.items():
+                    for city_url in area_urls:
+                        self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
+
+                # if CAN == True:
+                for area_name, area_urls in URLS_CAN.items():
+                    for city_url in area_urls:
+                        self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
+
+                # if USA == True:
+                for area_name, area_urls in URLS_USA.items():
+                    for city_url in area_urls:
+                        self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
+
 
     def get_CL_post_URLS(self):
-
+        pass
 
     def scrape_CL_post_data(self):
-
+        pass
 
     def make_WP_posts(self):
-
+        pass
 
     def die(self):
+        pass
