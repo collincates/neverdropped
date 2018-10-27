@@ -3,8 +3,8 @@ import datetime
 # from wordpresspost import new_wp_post
 import time
 from random import uniform
-from oop import DailyScrape, CLRSSFeed
-
+from CL_API import CLFactory
+#  from WP_API import WPFactory
 
 random_sleep = round(uniform(6, 8), 1)
 

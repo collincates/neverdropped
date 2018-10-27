@@ -99,5 +99,23 @@ def new_wp_post(posting_data, post_status='draft'):
         # 'when_posted': when_posted,
         # 'original url': orig_url
 
+
+
+
+
+{
+'cl_id': cl_id,
+'title': title,
+'price': price,
+'location': location,
+# 'make': make,
+# 'model': model,
+'body_text': body_text,
+'when_posted': when_posted,
+'original_url': orig_url,
+'images': images,
+}
+
+
 if __name__ == "__main__":
     new_wp_post({'title': 'new one', 'body_text': 'this isthe body text', 'post_status': 'publish', 'cl_id': '012396'})

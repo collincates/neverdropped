@@ -168,8 +168,5 @@ class CLFactory(object):
                     print('finished parsing and appending')
 
 
-    def make_WP_posts(self):
-        pass
-
     def die(self):
         pass

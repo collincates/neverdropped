@@ -138,15 +138,15 @@ def parse(posting_url):
     'images': images,
     }
 
-def scrape(rss_feed_url):
-    url_list = _get_urls_from_rss(rss_feed_url)
-    data = []
-    for url in url_list[0:2]:
-
-        print(parse(url))
-        data.append(parse(url))
-        time.sleep(5)
-    return data
+# def scrape(rss_feed_url):
+#     url_list = _get_urls_from_rss(rss_feed_url)
+#     data = []
+#     for url in url_list[0:2]:
+#
+#         print(parse(url))
+#         data.append(parse(url))
+#         time.sleep(5)
+#     return data
 
 
 
@@ -157,9 +157,9 @@ def scrape(rss_feed_url):
 # update DB with the above "statuses" on each listing
 #
 
-if __name__ == "__main__":
-    for city_abbrev in ca_cities_dict:
-        # collect CL RSS feed using search terms
-        link = _make_rss(ca_cities_dict[city_abbrev], "Kawasaki Ninja")
-        print(link)
-        print(type(link))
+# if __name__ == "__main__":
+#     for city_abbrev in ca_cities_dict:
+#         # collect CL RSS feed using search terms
+#         link = _make_rss(ca_cities_dict[city_abbrev], "Kawasaki Ninja")
+#         print(link)
+#         print(type(link))
