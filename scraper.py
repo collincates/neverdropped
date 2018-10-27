@@ -45,15 +45,15 @@ ca_cities_dict = {
 def _make_rss_single_search(city, search_terms):
     return f"https://{ca_cities_dict[city]}.craigslist.org/search/mcy?format=rss&query={'+'.join([term for term in search_terms.lower().split()])}"
 
-def _make_rss_loop(city_url, search_terms):
-    return f"{city_url}/search/mcy?format=rss&query={search_terms.lower()}"
+# def _make_rss_loop(city_url, search_terms):
+    # return f"{city_url}/search/mcy?format=rss&query={search_terms.lower()}"
 
 
 # return RSS feed entries that contain ALL of the search terms, and only ALL terms
 def _get_urls_from_rss(rss_feed_url):
     "Returns a list of posting URLs from a CL RSS feed"
-    cl_rss = requests.get(rss_feed_url)
-    soup = BeautifulSoup(cl_rss.text, 'html.parser')
+    request_rss = requests.get(rss_feed_url)
+    soup = BeautifulSoup(request_rss.text, 'html.parser')
     urls = [list_item['rdf:resource'] \
                 for list_item in soup.find_all('rdf:li')]
     #print('got list of urls')

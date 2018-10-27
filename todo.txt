@@ -2,4 +2,6 @@
 
 -Set up recurring scraping. This is probably a matter of using datetime and running the thing at a certain time. I’m hesitant to remove the scrap delay at this point since it will be pulling a ton of info at once. We can cross than when we get to it.
 
--Getting it on Heroku. I sat down with someone at a meetup last night who introduced me to Heroku, so I can pick his brain more soon when the time comes to set this up.
+-Build out County, State, County, City names for passing along with PostObjects.
+
+-Getting it on Heroku.

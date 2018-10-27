@@ -1,8 +1,12 @@
-import requests
-from bs4 import BeautifulSoup
+from random import uniform
 import time
+from bs4 import BeautifulSoup
+import requests
 from constants import URLS_CAN, URLS_UK, URLS_USA, ALL_MAKES
 from queries import QUERIES
+
+
+random_sleep = round(uniform(6, 8), 1)
 
 
 class CLPostObject(object):
@@ -74,6 +78,10 @@ class CLPostObject(object):
 class CLRSSFeed(object):
     def __init__(self, city_url, make, model):
         self.city_url = city_url
+        # self.country_name = country    implement to pass along for tags
+        # self.state_name = state        implement to pass along for tags
+        # self.county_name = county      implement to pass along for tags
+        # self.city_name = city          implement to pass along for tags
         self.make = make
         self.model = model
         self.rss_url = f"{self.city_url}/search/mcy?format=rss&query={self.make.lower()}+{self.model.lower()}"
@@ -84,7 +92,7 @@ class DailyScrape(object):
         self.rss_objects_to_scrape = []
         self.parsed_cl_postings = []
 
-    def get_RSS_feeds(self):
+    def get_rss_feeds(self):
         # todo: locations to search as arguments? UK=True, USA=True, CAN=True ??
         """
         Concatenate CL URLS in module 'constants' with QUERIES RSS urls  .
@@ -114,7 +122,30 @@ class DailyScrape(object):
                         self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
 
 
-    def get_CL_post_URLS(self):
+    def get_cl_posts_from_rss(self):
+        """
+        Appends all applicable CL posting URLs from a CL RSS feed object
+
+        -!- HITS SERVER, NEEDS SLEEP -!-
+
+
+        for rss_feed_object in self.rss_objects_to_scrape:
+            time.sleep(random_sleep)
+            request_rss = requests.get(rss_feed_object.rss_url)
+            soup = BeautifulSoup(request_rss.text, 'html.parser')
+            urls = [list_item['rdf:resource'] \
+                        for list_item in soup.find_all('rdf:li')]
+            if len(urls) == 0:
+                print(f"{rss_feed_object.city_url} has no matches for {rss_feed_object.make} {rss_feed_object.model} today.")
+            else:
+                for url in urls:
+                    # todo parse triggers when instantiating a PostObject().
+                    # implement parse before running.
+
+                    # Where to sleep? Here? or within parse?
+                    time.sleep(random_sleep)
+                    self.parsed_cl_postings.append(PostObject()):
+        """
         pass
 
     def scrape_CL_post_data(self):
