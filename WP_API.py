@@ -82,23 +82,14 @@ def new_wp_post(posting_data, post_status='draft'):
         )
 
         post.terms_names = {
-            # 'post_category': [posting_data['make']]   bike make
-            'post_tag': [posting_data['cl_id'], posting_data['location']]
-            # 'post_tag': [posting_data['other']] other / cl other
-            # 'post_tag': [posting_data['other keywords']] other / other keywords   will this be done by hand?
+            'post_category': [posting_data['make']]
+
+            'post_tag': [posting_data['cl_id'], posting_data['location']], #other terms from cl_author_tags]
+
         }
         post.post_status = post_status
 
         post_ident = wp.call(NewPost(post))
-
-
-
-
-        # 'location': location,
-        #               'body_text': body_text,
-        # 'when_posted': when_posted,
-        # 'original url': orig_url
-
 
 
 
@@ -108,8 +99,7 @@ def new_wp_post(posting_data, post_status='draft'):
 'title': title,
 'price': price,
 'location': location,
-# 'make': make,
-# 'model': model,
+# pass cl_tags_from_author
 'body_text': body_text,
 'when_posted': when_posted,
 'original_url': orig_url,

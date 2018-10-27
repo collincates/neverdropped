@@ -37,7 +37,7 @@ class CLPostObject(object):
 
     def parse(self):
         """
-        Parse info from CL post and assign data as class instance attributes
+        Parse info from CL post and assign data as PostObject() instance attributes
 
         -!- HITS SERVER, NEEDS SLEEP -!-
 
@@ -55,6 +55,7 @@ class CLPostObject(object):
 
         self.__name__ = self.cl_id
 
+        # Title
         self.title = soup.find(id='titletextonly').text
 
         # Price
@@ -63,9 +64,12 @@ class CLPostObject(object):
         except AttributeError:
             self.price = "No price given."
 
-        # Location input by original posting author
+        # Location as it was input by original posting author
         try:
-            self.location = soup.find('small').text.strip(' () ')
+            if '(google map)' in soup.find('small').text.strip(' () '):
+                pass
+            else:
+                self.location = soup.find('small').text.strip(' () ')
         except AttributeError:
             self.location = "No location entered into original post."
 
@@ -150,13 +154,13 @@ class CLFactory(object):
             time.sleep(random_sleep)
             request_rss = requests.get(rss_object.rss_url)
             soup = BeautifulSoup(request_rss.text, 'html.parser')
-            urls = [list_item['rdf:resource'] \
+            post_urls = [list_item['rdf:resource'] \
                         for list_item in soup.find_all('rdf:li')]
-            if len(urls) == 0:
+            if len(post_urls) == 0:
                 print(f"{rss_object.city_url} has no matches for {rss_object.make} {rss_object.model} today.")
 
             else:
-                for url in urls:
+                for url in post_urls:
                     # This will reduce pings to the CL server by skipping over
                     # anything that's already in the WP DB.
                     cl_id = re.split("(\d+).html$", url)[1]
