@@ -28,6 +28,7 @@ class CLPostObject(object):
         self.title = None
         self.price = None
         self.location = None
+        self.cl_tags_from_author = None
         self.body_text = None
         self.when_posted = None
         self.images = None
@@ -68,17 +69,12 @@ class CLPostObject(object):
         except AttributeError:
             self.location = "No location entered into original post."
 
-        # Make
-        # try:
-        #     self.make = soup.find
-        # except AttributeError:
-        #     self.make = "Make unknown."
-        #
-        # # Model
-        # try:
-        #     self.model = soup.find
-        # except AttributeError:
-        #     self.model = "Model unknown."
+        # Tags that were input by author of original post
+        try:
+            cl_meta_area = soup.find('div', class_='mapAndAttrs')('span')
+            self.cl_tags_from_author = [' '.join(text) for text in [[text for text in field.stripped_strings] for field in cl_meta_area]]
+        except AttributeError:
+            self.cl_tags_from_author = "No CL meta fields were entered by post author into original post."
 
         # Body Text
         try:
