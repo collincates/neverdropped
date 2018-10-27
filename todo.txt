@@ -1,7 +1,10 @@
 -Implement desired metadata fields (send me a list if you have one in mind so I can attempt setting it up. Make, Model, etc.). Am also thinking it’s valuable to organize by location, too. Some like like ‘US/AZ/Phoenix’ or similar, that would be heirarchal.
 
--Set up recurring scraping. This is probably a matter of using datetime and running the thing at a certain time. I’m hesitant to remove the scrap delay at this point since it will be pulling a ton of info at once. We can cross than when we get to it.
+    -Get sidebar data like fuel, make, model, transmission, etc. from CL.
+    -Build out County, State, County, City names for passing along with PostObjects.
 
--Build out County, State, County, City names for passing along with PostObjects.
+-Set up ping to check if CL posts are still active. If not, remove draft post from WP.
+
+-Set up recurring scraping. This is probably a matter of using datetime and running the thing at a certain time. I’m hesitant to remove the scrap delay at this point since it will be pulling a ton of info at once. We can cross than when we get to it.
 
 -Getting it on Heroku.
