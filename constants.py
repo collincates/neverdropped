@@ -1101,7 +1101,7 @@ US_STATES = {
     'Wyoming': 'WY',
 }
 
-URLS_USA = {
+URLS_USA = {    # 444 unique locations
      "AK": [
       "https://anchorage.craigslist.org",
       "https://fairbanks.craigslist.org",
@@ -1648,7 +1648,8 @@ URLS_USA = {
      ]
 }
 
-URLS_CAN = {
+URLS_CAN = {    # 55 unique locations
+
      "barrie, ON": [
       "https://barrie.craigslist.ca"
      ],
@@ -1816,7 +1817,7 @@ URLS_CAN = {
      ]
 }
 
-URLS_UK = {
+URLS_UK = {     #27 unique locations
      "aberdeen": [
       "https://aberdeen.craigslist.co.uk"
      ],

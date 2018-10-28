@@ -107,5 +107,31 @@ def new_wp_post(posting_data, post_status='draft'):
 }
 
 
+def ping_posts():
+    pass
+    # get pages in batches of 20
+    # offset = 0
+    # increment = 20
+    # while True:
+    #     posts = wp.call(GetPosts({'post_status': ['publish', 'draft'], 'number': increment, 'offset': offset}))
+    #         # if len(posts) == 0:
+    #                 break  # no more posts returned
+    #         for post in posts:
+    #                 do_something(post)
+    #         offset = offset + increment
+
+    # or use this code
+    # pub_and_draft_posts = wp.call(GetPosts({'post_status': ['publish', 'draft'], 'number': 1000})):
+
+        # for post in pub_and_draft_posts:
+            # time.sleep(random_sleep)
+            # ping_post = requests.get(post.orig_url)
+            # soup_ping = BeautifulSoup(ping_post.text, 'html.parser')
+            # if soup_ping.find('div', class_='removed'):
+                # print(soup.find('h2').getText().split('\n')[0])
+                # wp.call(DeletePost(post))
+            # else:
+                # pass
+
 if __name__ == "__main__":
     new_wp_post({'title': 'new one', 'body_text': 'this isthe body text', 'post_status': 'publish', 'cl_id': '012396'})

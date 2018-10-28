@@ -17,6 +17,7 @@ for post in cl_posts:
 
 
 if __name__ == "__main__":
+# at 5pm PST:
     cl_factory = CLFactory()
     cl_factory.get_rss_feeds()
     cl_factory.get_cl_posts_from_rss_feeds()
@@ -26,6 +27,8 @@ if __name__ == "__main__":
 # cl_factory.die()
 # wp_factory.die()
 
+# at 5am PST:
+    # ping if posts active. if not, delete.
 
 
 # scrape in timezones?
