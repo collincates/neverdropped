@@ -8,14 +8,32 @@ import time
 
 
 # from wordpress_xmlrpc.methods.users import GetUserInfo
-
+"""
 wordpress_url = 'http://localhost:8888/motocl/xmlrpc.php'
 username = 'collin'
 password = '0wlL prfE pqjU 5ru0 OREt oa3V' #base64 encoded version of my pass
-
-
 wp = Client(wordpress_url, username, password)
 
+
+"""
+class WPSession():
+    def __init__(self):
+        self.url = 'http://localhost:8888/motocl/xmlrpc.php'
+        self.user = 'collin'
+        self.password = '0wlL prfE pqjU 5ru0 OREt oa3V'
+        self.connection = None
+        self.tags = None
+        self.connect()
+        self.get_all_tags()
+    def connect(self):
+        self.connection = Client(self.url, self.user, self.password)
+    def get_all_tags(self):
+        try:
+            self.tags = self.connection.call(taxonomies.GetTerms('post_tag'))
+        except:
+            print("A connection has not been established.")
+
+"""
 def new_wp_post(posting_data, post_status='draft'):
     # check if a cl_id already exists in the WP DB. If so, pass.
     tag_list = [tag.name for tag in [entry for entry in wp.call(taxonomies.GetTerms('post_tag'))]]
@@ -32,16 +50,16 @@ def new_wp_post(posting_data, post_status='draft'):
         thumbnailed = False
 
         for img in posting_data['images']:
-            """
-            time.sleep(5)
-            image = WordPressMedia()
-            image._def['title'] = '{}_{:02d}.jpg'.format(posting_data['cl_id'], posting_data['images'].index(img))
-            image._def['parent'] = int(post_ident)
-            response = wp.call(media.UploadFile(image))
-            print(response._def['link'])
+
+            # time.sleep(5)
+            # image = WordPressMedia()
+            # image._def['title'] = '{}_{:02d}.jpg'.format(posting_data['cl_id'], posting_data['images'].index(img))
+            # image._def['parent'] = int(post_ident)
+            # response = wp.call(media.UploadFile(image))
+            # print(response._def['link'])
 
 
-            """
+
             time.sleep(5)
             data = {
             'name': '{}_{:02d}.jpg'.format(posting_data['cl_id'], posting_data['images'].index(img) + 1),
@@ -135,3 +153,4 @@ def ping_posts():
 
 if __name__ == "__main__":
     new_wp_post({'title': 'new one', 'body_text': 'this isthe body text', 'post_status': 'publish', 'cl_id': '012396'})
+"""

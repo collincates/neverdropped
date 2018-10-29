@@ -1,1 +1,1 @@
-python3.6 controller.py
+python3.6 main.py

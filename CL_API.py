@@ -1,4 +1,5 @@
 from random import uniform
+import re
 import time
 from bs4 import BeautifulSoup
 import requests
@@ -8,7 +9,6 @@ from queries import QUERIES
 
 random_sleep = round(uniform(6, 8), 1)
 
-seen_listings = set()
 
 class CLPostObject(object):
 
@@ -90,8 +90,13 @@ class CLPostObject(object):
         self.when_posted = soup.find('p', id='display-date') \
                                 .find('time', class_='date timeago')['datetime']
 
-        # Images
-        self.images = [a['href'] for a in soup.find_all('a', class_='thumb', href=True)]
+        # Images. Posting either has zero, one, or multiple images.
+        if soup.find('figure', class_='iw multiimage'):
+            self.images = [a['href'] for a in soup.find_all('a', class_='thumb', href=True)]
+        elif soup.find('figure', class_='iw oneimage'):
+            self.images = soup.find('div', class_='swipe-wrap').find('img')['src']
+        else:
+            self.images = []
 
 
 class CLRSSFeed(object):
@@ -104,14 +109,14 @@ class CLRSSFeed(object):
         self.make = make
         self.model = model
         self.rss_url = f"{self.city_url}/search/mcy?format=rss&query={self.make.lower()}+{self.model.lower()}"
-
+        self.posting_urls = []
 
 class CLFactory(object):
     def __init__(self):
         self.rss_objects_to_scrape = []
-        self.parsed_cl_postings = []
+        self.new_cl_postings = []
 
-    def get_rss_feeds(self):
+    def make_rss_feeds(self):
         # todo: locations to search as arguments? UK=True, USA=True, CAN=True ??
         """
         Concatenate CL URLS in module 'constants' with QUERIES RSS urls.
@@ -122,7 +127,7 @@ class CLFactory(object):
         # get back to this if speed in an issue # search_terms = lambda make, model: [f"{make} {model}" for model in [model for model in models for [(make, models) for make, models in QUERIES.items()]]
 
         """
-
+        count = 0   #testone
         for make, models in QUERIES.items():
             for model in models:
 
@@ -130,7 +135,9 @@ class CLFactory(object):
                 for area_name, area_urls in URLS_USA.items():
                     for city_url in area_urls:
                         self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
-
+                        if count > 0: #testone
+                            return  #testone
+                        count +=1   #testone
                 # if UK == True:
                 for area_name, area_urls in URLS_UK.items():
                     for city_url in area_urls:
@@ -142,9 +149,9 @@ class CLFactory(object):
                         self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
 
 
-    def get_cl_posts_from_rss_feeds(self):
+    def get_all_cl_posts_from_rss_feeds(self):
         """
-        Appends all applicable CL posting URLs from a CL RSS feed object
+        Append all applicable CL posting URLs from a CL RSS feed object.
 
         -!- HITS SERVER, NEEDS SLEEP -!-
 
@@ -154,25 +161,33 @@ class CLFactory(object):
             time.sleep(random_sleep)
             request_rss = requests.get(rss_object.rss_url)
             soup = BeautifulSoup(request_rss.text, 'html.parser')
-            post_urls = [list_item['rdf:resource'] \
-                        for list_item in soup.find_all('rdf:li')]
-            if len(post_urls) == 0:
+            rss_object.posting_urls = [list_item['rdf:resource'] \
+                        for list_item in soup.find_all('rdf:li')][0:2] #testone
+            # rss_object.posting_urls = [list_item['rdf:resource'] \
+            #             for list_item in soup.find_all('rdf:li')]
+            if len(rss_object.posting_urls) == 0:
                 print(f"{rss_object.city_url} has no matches for {rss_object.make} {rss_object.model} today.")
 
+
+    def cull_new_posts_from_rss_feeds(self, old_post_ids):
+        """
+        Reduce pings to CL by skipping posts that are already in the WP DB.
+
+        """
+
+        for rss_object in self.rss_objects_to_scrape:
+            for url in rss_object.posting_urls[0:2]: #testone
+            # for url in rss_object[0].posting_urls:
+                cl_id = re.split("(\d+).html$", url)[1]
+
+            if cl_id in old_post_ids:
+                print(f"{cl_id} was already seen.")
+                pass
+
             else:
-                for url in post_urls:
-                    # This will reduce pings to the CL server by skipping over
-                    # anything that's already in the WP DB.
-                    cl_id = re.split("(\d+).html$", url)[1]
-
-                    if cl_id in seen_listings:
-                        print(f"{cl_id} was already seen.")
-                        pass
-
-                    else:
-                        print('parsing and appending')
-                        self.parsed_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
-                        print('finished parsing and appending')
+                print('parsing and appending')
+                self.new_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
+                print('finished parsing and appending')
 
 
     def die(self):

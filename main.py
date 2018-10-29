@@ -1,6 +1,7 @@
 import datetime
 from CL_API import CLFactory
-# from WP_API import WPFactory
+from WP_API import WPSession#, WPFactory
+import time
 
 """
 city = input("Enter a city name: ")
@@ -16,19 +17,46 @@ for post in cl_posts:
 # datetime setting as variable
 
 
-if __name__ == "__main__":
-# at 5pm PST:
+def main():
+    # at 5pm PST:
+    wp_session = WPSession()
+    print("started wp session")
+    print(wp_session.tags)
     cl_factory = CLFactory()
-    cl_factory.get_rss_feeds()
-    cl_factory.get_cl_posts_from_rss_feeds()
+    print("made cl factory")
+    cl_factory.make_rss_feeds()
+    print("made rss feeds")
+    print(cl_factory.rss_objects_to_scrape)
+    cl_factory.get_all_cl_posts_from_rss_feeds()
+    print("got all posts from rss feeds")
+    print([len(rss_object.posting_urls) for rss_object in cl_factory.rss_objects_to_scrape])
+    cl_factory.cull_new_posts_from_rss_feeds(wp_session.tags)
+    print("made new post objects")
+    for post in cl_factory.new_cl_postings:
+        print(
+        post.orig_url,
+        post.make,
+        post.model,
+        post.cl_id,
+        post.__name__,
+        post.title,
+        post.price,
+        post.location,
+        post.cl_tags_from_author,
+        post.body_text,
+        post.when_posted,
+        post.images
+        )
+    # todo
+    # wp_factory.make_WP_posts()
+    # cl_factory.die()
+    # wp_factory.die()
 
-# todo
-# wp_factory.make_WP_posts()
-# cl_factory.die()
-# wp_factory.die()
-
-# at 5am PST:
+    # at 5am PST:
     # ping if posts active. if not, delete.
+
+if __name__ == "__main__":
+    main()
 
 
 # scrape in timezones?
