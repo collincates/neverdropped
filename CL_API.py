@@ -31,7 +31,7 @@ class CLPostObject(object):
         self.cl_tags_from_author = None
         self.body_text = None
         self.when_posted = None
-        self.images = None
+        self.image_links = None
 
         self.parse()
 
@@ -92,11 +92,11 @@ class CLPostObject(object):
 
         # Images. Posting either has zero, one, or multiple images.
         if soup.find('figure', class_='iw multiimage'):
-            self.images = [a['href'] for a in soup.find_all('a', class_='thumb', href=True)]
+            self.image_links = [a['href'] for a in soup.find_all('a', class_='thumb', href=True)]
         elif soup.find('figure', class_='iw oneimage'):
-            self.images = soup.find('div', class_='swipe-wrap').find('img')['src']
+            self.image_links = soup.find('div', class_='swipe-wrap').find('img')['src']
         else:
-            self.images = []
+            self.image_links = []
 
 
 class CLRSSFeed(object):
@@ -173,12 +173,12 @@ class CLFactory(object):
         Reduce pings to CL by skipping posts that are already in the WP DB.
 
         """
-
+        print(compare_to)
         for rss_object in self.rss_objects_to_scrape:
             for url in rss_object.posting_urls:
                 cl_id = re.split("(\d+).html$", url)[1]
-
-                if cl_id in compare_to:
+                print(cl_id)
+                if cl_id in [tag.name for tag in compare_to]:
                     print(f"{cl_id} was already seen.")
                     pass
 

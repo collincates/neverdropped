@@ -1,6 +1,6 @@
 import datetime
 from CL_API import CLFactory
-from WP_API import WPSession#, WPFactory
+from WP_API import WPSession
 import time
 
 """
@@ -46,10 +46,11 @@ def main():
         post.cl_tags_from_author,
         post.body_text,
         post.when_posted,
-        post.images
+        post.image_links
         )
+    wp_session.make_new_wp_objects_from(cl_factory.new_cl_postings)
+    wp_session.post_new_wp_objects()
     # todo
-    # wp_factory.make_WP_posts()
     # cl_factory.die()
     # wp_factory.die()
 
