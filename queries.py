@@ -1,6 +1,6 @@
 QUERIES = {
     "Honda": [
-        "",
+        "paint",
         ],
     # "Honda": [
     #     "XR650R",

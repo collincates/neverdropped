@@ -26,11 +26,12 @@ def main():
     print("made cl factory")
     cl_factory.make_rss_feeds()
     print("made rss feeds")
-    print(cl_factory.rss_objects_to_scrape)
+    print([rss_object.rss_url for rss_object in cl_factory.rss_objects_to_scrape])
     cl_factory.get_all_cl_posts_from_rss_feeds()
     print("got all posts from rss feeds")
-    print([len(rss_object.posting_urls) for rss_object in cl_factory.rss_objects_to_scrape])
-    cl_factory.cull_new_posts_from_rss_feeds(wp_session.tags)
+    print(cl_factory.rss_objects_to_scrape)
+    print([rss_object.posting_urls for rss_object in cl_factory.rss_objects_to_scrape])
+    cl_factory.cull_new_posts_from_rss_feeds(compare_to=wp_session.tags)
     print("made new post objects")
     for post in cl_factory.new_cl_postings:
         print(

@@ -157,37 +157,35 @@ class CLFactory(object):
 
         """
 
-        for rss_object in self.rss_objects_to_scrape:
+        for rss_object in reversed(self.rss_objects_to_scrape):
             time.sleep(random_sleep)
             request_rss = requests.get(rss_object.rss_url)
             soup = BeautifulSoup(request_rss.text, 'html.parser')
             rss_object.posting_urls = [list_item['rdf:resource'] \
-                        for list_item in soup.find_all('rdf:li')][0:2] #testone
-            # rss_object.posting_urls = [list_item['rdf:resource'] \
-            #             for list_item in soup.find_all('rdf:li')]
+                        for list_item in soup.find_all('rdf:li')]
+            print(rss_object.city_url, rss_object.posting_urls)
             if len(rss_object.posting_urls) == 0:
                 print(f"{rss_object.city_url} has no matches for {rss_object.make} {rss_object.model} today.")
+                self.rss_objects_to_scrape.remove(rss_object)
 
-
-    def cull_new_posts_from_rss_feeds(self, old_post_ids):
+    def cull_new_posts_from_rss_feeds(self, compare_to=None):
         """
         Reduce pings to CL by skipping posts that are already in the WP DB.
 
         """
 
         for rss_object in self.rss_objects_to_scrape:
-            for url in rss_object.posting_urls[0:2]: #testone
-            # for url in rss_object[0].posting_urls:
+            for url in rss_object.posting_urls:
                 cl_id = re.split("(\d+).html$", url)[1]
 
-            if cl_id in old_post_ids:
-                print(f"{cl_id} was already seen.")
-                pass
+                if cl_id in compare_to:
+                    print(f"{cl_id} was already seen.")
+                    pass
 
-            else:
-                print('parsing and appending')
-                self.new_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
-                print('finished parsing and appending')
+                else:
+                    print('parsing and appending')
+                    self.new_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
+                    print('finished parsing and appending')
 
 
     def die(self):
