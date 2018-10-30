@@ -1,7 +1,5 @@
 -set image datetime to orig cl posting datetime
 
--Test initial check against WP DB for existing cl_id, CL_API, 181. Must complete WP write to test this.
-
     -Build out County, State, County, City names for passing along with PostObjects.
 
 -Set up ping to check if CL posts are still active. If not, remove draft post from WP.

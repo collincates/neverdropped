@@ -1,14 +1,22 @@
 QUERIES = {
     "Honda": [
-        "paint",
+        # "CB350",
+        "CRF",
+        # "CL350",
         ],
-    # "Honda": [
-    #     "XR650R",
-    #     "CB350",
-    #     "xxx",
+
+    # "BMW": [
+    #     "R69",
     #     ],
-    # "Yamaha": [
-    #     "xxx",
-    #     "xxx",
+    #
+    # "Norton": [
+    #     "Commando",
     #     ],
+
     }
+
+    # "xx": [
+    #     "x",
+    #     "x",
+    #     ],
+    # }

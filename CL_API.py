@@ -15,19 +15,19 @@ class CLPostObject(object):
     def __init__(self, orig_url, make, model): # ,country, state, county, city):
         self.orig_url = orig_url
 
-        # self.country_name = country    implement to pass along for tags
-        # self.state_name = state        implement to pass along for tags
-        # self.county_name = county      implement to pass along for tags
-        # self.city_name = city          implement to pass along for tags
-
         self.make = make
         self.model = model
-
         self.cl_id = None
         self.__name__ = None
         self.title = None
         self.price = None
         self.location = None
+
+        # self.country = country    implement to pass along for tags
+        # self.state = state        implement to pass along for tags
+        # self.county = county      implement to pass along for tags
+        # self.city = city          implement to pass along for tags
+
         self.cl_tags_from_author = None
         self.body_text = None
         self.when_posted = None
@@ -94,7 +94,7 @@ class CLPostObject(object):
         if soup.find('figure', class_='iw multiimage'):
             self.image_links = [a['href'] for a in soup.find_all('a', class_='thumb', href=True)]
         elif soup.find('figure', class_='iw oneimage'):
-            self.image_links = soup.find('div', class_='swipe-wrap').find('img')['src']
+            self.image_links = [soup.find('div', class_='swipe-wrap').find('img')['src']]
         else:
             self.image_links = []
 
@@ -102,13 +102,13 @@ class CLPostObject(object):
 class CLRSSFeed(object):
     def __init__(self, city_url, make, model):
         self.city_url = city_url
-        # self.country_name = country    implement to pass along for tags
-        # self.state_name = state        implement to pass along for tags
-        # self.county_name = county      implement to pass along for tags
-        # self.city_name = city          implement to pass along for tags
+        # self.country = country    implement to pass along for tags
+        # self.state = state        implement to pass along for tags
+        # self.county = county      implement to pass along for tags
+        # self.city = city          implement to pass along for tags
         self.make = make
         self.model = model
-        self.rss_url = f"{self.city_url}/search/mcy?format=rss&query={self.make.lower()}+{self.model.lower()}"
+        self.rss_url = f"{self.city_url}/search/mcy?format=rss&query={self.make.lower()}+{self.model.lower()}*"
         self.posting_urls = []
 
 class CLFactory(object):
@@ -127,7 +127,6 @@ class CLFactory(object):
         # get back to this if speed in an issue # search_terms = lambda make, model: [f"{make} {model}" for model in [model for model in models for [(make, models) for make, models in QUERIES.items()]]
 
         """
-        count = 0   #testone
         for make, models in QUERIES.items():
             for model in models:
 
@@ -135,18 +134,15 @@ class CLFactory(object):
                 for area_name, area_urls in URLS_USA.items():
                     for city_url in area_urls:
                         self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
-                        if count > 0: #testone
-                            return  #testone
-                        count +=1   #testone
                 # if UK == True:
-                for area_name, area_urls in URLS_UK.items():
-                    for city_url in area_urls:
-                        self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
-
-                # if CAN == True:
-                for area_name, area_urls in URLS_CAN.items():
-                    for city_url in area_urls:
-                        self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
+                # for area_name, area_urls in URLS_UK.items():
+                #     for city_url in area_urls:
+                #         self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
+                #
+                # # if CAN == True:
+                # for area_name, area_urls in URLS_CAN.items():
+                #     for city_url in area_urls:
+                #         self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
 
 
     def get_all_cl_posts_from_rss_feeds(self):
@@ -156,7 +152,7 @@ class CLFactory(object):
         -!- HITS SERVER, NEEDS SLEEP -!-
 
         """
-
+        self.rss_objects_to_scrape = self.rss_objects_to_scrape
         for rss_object in reversed(self.rss_objects_to_scrape):
             time.sleep(random_sleep)
             request_rss = requests.get(rss_object.rss_url)
@@ -167,6 +163,10 @@ class CLFactory(object):
             if len(rss_object.posting_urls) == 0:
                 print(f"{rss_object.city_url} has no matches for {rss_object.make} {rss_object.model} today.")
                 self.rss_objects_to_scrape.remove(rss_object)
+            elif len(rss_object.posting_urls) == 1:
+                print(f"{rss_object.city_url} has {len(rss_object.posting_urls)} match for {rss_object.make} {rss_object.model} today.")
+            else:
+                print(f"{rss_object.city_url} has {len(rss_object.posting_urls)} matches for {rss_object.make} {rss_object.model} today.")
 
     def cull_new_posts_from_rss_feeds(self, compare_to=None):
         """
@@ -175,7 +175,9 @@ class CLFactory(object):
         """
         print(compare_to)
         for rss_object in self.rss_objects_to_scrape:
+            # count = 0 # testone
             for url in rss_object.posting_urls:
+                # if count < 1: # testone
                 cl_id = re.split("(\d+).html$", url)[1]
                 print(cl_id)
                 if cl_id in [tag.name for tag in compare_to]:
@@ -186,7 +188,4 @@ class CLFactory(object):
                     print('parsing and appending')
                     self.new_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
                     print('finished parsing and appending')
-
-
-    def die(self):
-        pass
+                        # count += 1 # testone
