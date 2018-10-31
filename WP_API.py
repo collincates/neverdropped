@@ -1,3 +1,4 @@
+import sys
 import datetime
 from random import uniform
 import time
@@ -86,9 +87,10 @@ class WPSession():
     def __init__(self):
         self.url = 'http://localhost:8888/motocl/xmlrpc.php'
         self.user = 'collin' #base64 encode username, too?
-        self.password = '0wlL prfE pqjU 5ru0 OREt oa3V' #base64 encoded version of my pass. Do this somewhere else for each session?
+        self.password = 'CYcY7@5tHU1SXZ47' #base64 encoded version of my pass. Do this somewhere else for each session?
+        # self.password = '0wlL prfE pqjU 5ru0 OREt oa3V' #base64 encoded version of my pass. Do this somewhere else for each session?
         self.connection = None
-        self.tags = None
+        self.tags = []
         self.wp_post_objects = []
         self.connect()
         self.get_all_tags()
@@ -99,6 +101,7 @@ class WPSession():
             self.tags = self.connection.call(taxonomies.GetTerms('post_tag'))
         except:
             print("A connection has not been established.")
+            sys.exit(0)
 
     def make_new_wp_objects_from(self, cl_post_objects, post_status='draft'):
         # check if a cl_id already exists in the WP DB. If so, pass.

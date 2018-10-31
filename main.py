@@ -27,11 +27,11 @@ def main():
     cl_factory.make_rss_feeds()
     print("made rss feeds")
     # print([rss_object.rss_url for rss_object in cl_factory.rss_objects_to_scrape])
-    cl_factory.get_all_cl_posts_from_rss_feeds()
-    print("got all posts from rss feeds")
+    cl_factory.get_new_cl_posts_from_rss_feeds(compare_to=wp_session.tags)
+    print("got new posts from rss feeds")
     # print(cl_factory.rss_objects_to_scrape)
-    print([rss_object.posting_urls for rss_object in cl_factory.rss_objects_to_scrape])
-    cl_factory.cull_new_posts_from_rss_feeds(compare_to=wp_session.tags)
+    # print([rss_object.posting_urls for rss_object in cl_factory.rss_objects_to_scrape])
+    # cl_factory.cull_new_posts_from_rss_feeds(compare_to=wp_session.tags)
     print("made new post objects")
     for post in cl_factory.new_cl_postings:
         print(
@@ -48,10 +48,12 @@ def main():
         post.when_posted,
         post.image_links
         )
+
     wp_session.make_new_wp_objects_from(cl_factory.new_cl_postings)
     # print(wp_session.wp_post_objects)
     wp_session.post_new_wp_objects()
     print(f"posted {[post_object.id for post_object in wp_session.wp_post_objects]}")
+
     # todo
 
     # cl_factory.die()
