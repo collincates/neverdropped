@@ -160,25 +160,23 @@ class CLFactory(object):
             rss_object.posting_urls = [list_item['rdf:resource'] \
                         for list_item in soup.find_all('rdf:li')]
 
-            # Reduce pings to CL by skipping posts that are already in the WP DB.
-            print(compare_to)
-
+            # Reduce pings to CL by skipping posts that are  in the WP DB.
             # count = 0 # testone
             for url in reversed(rss_object.posting_urls):
                 # if count < 1: # testone
                 cl_id = re.split("(\d+).html$", url)[1]
-                print(cl_id)
+
                 if cl_id in [tag.name for tag in compare_to]:
                     print(f"{cl_id} was already seen.")
                     rss_object.posting_urls.remove(url)
+
                 else:
                     print(f"Parsing {cl_id}.")
                     self.new_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
                     print(f"Finished parsing {cl_id}.")
                         # count += 1 # testone
 
-            print(f"{rss_object.city_url}, {rss_object.posting_urls} from rss_object.")
-
+            # print(f"{rss_object.city_url}, {rss_object.posting_urls} from rss_object.")
             if len(rss_object.posting_urls) == 0:
                 print(f"{rss_object.city_url} has no matches for {rss_object.make} {rss_object.model} today.")
                 self.rss_objects_to_scrape.remove(rss_object)
@@ -186,52 +184,3 @@ class CLFactory(object):
                 print(f"{rss_object.city_url} has 1 match for {rss_object.make} {rss_object.model} today.")
             else:
                 print(f"{rss_object.city_url} has {len(rss_object.posting_urls)} matches for {rss_object.make} {rss_object.model} today.")
-
-
-
-
-
-    # def get_all_cl_posts_from_rss_feeds(self):
-    #     """
-    #     Append all applicable CL posting URLs from a CL RSS feed object.
-    #
-    #     -!- HITS SERVER, NEEDS SLEEP -!-
-    #
-    #     """
-    #     self.rss_objects_to_scrape = self.rss_objects_to_scrape
-    #     for rss_object in reversed(self.rss_objects_to_scrape):
-    #         time.sleep(random_sleep)
-    #         request_rss = requests.get(rss_object.rss_url)
-    #         soup = BeautifulSoup(request_rss.text, 'html.parser')
-    #         rss_object.posting_urls = [list_item['rdf:resource'] \
-    #                     for list_item in soup.find_all('rdf:li')]
-    #         print(rss_object.city_url, rss_object.posting_urls)
-    #         if len(rss_object.posting_urls) == 0:
-    #             print(f"{rss_object.city_url} has no matches for {rss_object.make} {rss_object.model} today.")
-    #             self.rss_objects_to_scrape.remove(rss_object)
-    #         elif len(rss_object.posting_urls) == 1:
-    #             print(f"{rss_object.city_url} has {len(rss_object.posting_urls)} match for {rss_object.make} {rss_object.model} today.")
-    #         else:
-    #             print(f"{rss_object.city_url} has {len(rss_object.posting_urls)} matches for {rss_object.make} {rss_object.model} today.")
-    #
-    # def cull_new_posts_from_rss_feeds(self, compare_to=None):
-    #     """
-    #     Reduce pings to CL by skipping posts that are already in the WP DB.
-    #
-    #     """
-    #     print(compare_to)
-    #     for rss_object in self.rss_objects_to_scrape:
-    #         # count = 0 # testone
-    #         for url in rss_object.posting_urls:
-    #             # if count < 1: # testone
-    #             cl_id = re.split("(\d+).html$", url)[1]
-    #             print(cl_id)
-    #             if cl_id in [tag.name for tag in compare_to]:
-    #                 print(f"{cl_id} was already seen.")
-    #                 pass
-    #
-    #             else:
-    #                 print('parsing and appending')
-    #                 self.new_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
-    #                 print('finished parsing and appending')
-    #                     # count += 1 # testone

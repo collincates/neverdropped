@@ -1102,12 +1102,12 @@ US_STATES = {
 }
 
 URLS_USA = {    # 444 unique locations
-     "AK": [
-      "https://anchorage.craigslist.org",
-      "https://fairbanks.craigslist.org",
-      "https://kenai.craigslist.org",
-      "https://juneau.craigslist.org"
-     ],
+     # "AK": [
+     #  "https://anchorage.craigslist.org",
+     #  "https://fairbanks.craigslist.org",
+     #  "https://kenai.craigslist.org",
+     #  "https://juneau.craigslist.org"
+     # ],
      # "AL": [
      #  "https://auburn.craigslist.org",
      #  "https://bham.craigslist.org",
@@ -1120,14 +1120,14 @@ URLS_USA = {    # 444 unique locations
      #  "https://montgomery.craigslist.org",
      #  "https://tuscaloosa.craigslist.org"
      # ],
-     # "AR": [
-     #  "https://fayar.craigslist.org",
-     #  "https://fortsmith.craigslist.org",
-     #  "https://jonesboro.craigslist.org",
-     #  "https://littlerock.craigslist.org",
-     #  "https://memphis.craigslist.org",
-     #  "https://texarkana.craigslist.org"
-     # ],
+     "AR": [
+      "https://fayar.craigslist.org",
+      "https://fortsmith.craigslist.org",
+      "https://jonesboro.craigslist.org",
+      "https://littlerock.craigslist.org",
+      "https://memphis.craigslist.org",
+      "https://texarkana.craigslist.org"
+     ],
      # "AZ": [
      #  "https://flagstaff.craigslist.org",
      #  "https://mohave.craigslist.org",

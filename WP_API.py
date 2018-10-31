@@ -3,6 +3,7 @@ import datetime
 from random import uniform
 import time
 import requests
+from bs4 import BeautifulSoup
 from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import taxonomies, media
@@ -220,8 +221,8 @@ class WPSession():
                 post_object.id = self.connection.call(NewPost(post_object))
 
 
-    def ping_posts():
-        pass
+    def ping_posts(self):
+        # pass
         # get pages in batches of 20
         # offset = 0
         # increment = 20
@@ -234,18 +235,21 @@ class WPSession():
         #         offset = offset + increment
 
         # or use this code
-        # pub_and_draft_posts = self.connection.call(GetPosts({'post_status': ['publish', 'draft'], 'number': 1000})):
+        pub_and_draft_posts = self.connection.call(GetPosts({'post_status': ['publish', 'draft'], 'number': 1000}))
 
-            # for post in reversed(pub_and_draft_posts):
-                # time.sleep(random_sleep)
-                # original_posting_url = [meta['value'] for meta in post.custom_fields if meta['key'] == 'original_posting_url']
-                # ping_post = requests.get(original_posting_url)
-                # soup_ping = BeautifulSoup(ping_post.text, 'html.parser')
-                # if soup_ping.find('div', class_='removed'):
-                    # print(soup.find('h2').getText().split('\n')[0])
-                    # self.connection.call(DeletePost(post))
-                # else:
-                    # pass
+        for post in reversed(pub_and_draft_posts):
+            time.sleep(random_sleep)
+            original_posting_url = [meta['value'] for meta in post.custom_fields if meta['key'] == 'original_posting_url'][0]
+            ping_post = requests.get(original_posting_url)
+            soup_ping = BeautifulSoup(ping_post.text, 'html.parser')
+            if soup_ping.find('div', class_='removed'):
+                print(soup.find('h2').getText().split('\n')[0])
+                self.connection.call(DeletePost(post))
+                print(f'Deleted {post.title}. It was at {original_posting_url}.')
+            else:
+                print(f'{post.title} is still active at {original_posting_url}.')
+                pass
 
 if __name__ == "__main__":
-    pass
+    wp = WPSession()
+    wp.ping_posts()

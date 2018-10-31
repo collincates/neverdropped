@@ -1,8 +1,8 @@
+-Ping...it works but how to notify when a post has been removed? Otherwise it just disappears with no explanation.
+
+-Build out County, State, County, City names for passing along with PostObjects.
+
 -set image datetime to orig cl posting datetime
-
-    -Build out County, State, County, City names for passing along with PostObjects.
-
--Set up ping to check if CL posts are still active. If not, remove draft post from WP.
 
 -Set up recurring scraping. This is probably a matter of using datetime and running the thing at a certain time. I’m hesitant to remove the scrap delay at this point since it will be pulling a ton of info at once. We can cross than when we get to it.
 
