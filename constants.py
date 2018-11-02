@@ -1128,16 +1128,16 @@ URLS_USA = {    # 444 unique locations
       "https://memphis.craigslist.org",
       "https://texarkana.craigslist.org"
      ],
-     # "AZ": [
-     #  "https://flagstaff.craigslist.org",
-     #  "https://mohave.craigslist.org",
-     #  "https://phoenix.craigslist.org",
-     #  "https://prescott.craigslist.org",
-     #  "https://showlow.craigslist.org",
-     #  "https://sierravista.craigslist.org",
-     #  "https://tucson.craigslist.org",
-     #  "https://yuma.craigslist.org"
-     # ],
+     "AZ": [
+      "https://flagstaff.craigslist.org",
+      "https://mohave.craigslist.org",
+      "https://phoenix.craigslist.org",
+      "https://prescott.craigslist.org",
+      "https://showlow.craigslist.org",
+      "https://sierravista.craigslist.org",
+      "https://tucson.craigslist.org",
+      "https://yuma.craigslist.org"
+     ],
      # "CA": [
      #  "https://bakersfield.craigslist.org",
      #  "https://chico.craigslist.org",

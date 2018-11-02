@@ -1,3 +1,5 @@
+-Rename project to Neverdropped
+
 -Ping...it works but how to notify when a post has been removed? Otherwise it just disappears with no explanation.
 
 -Build out County, State, County, City names for passing along with PostObjects.
