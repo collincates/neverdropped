@@ -1,7 +1,7 @@
 import datetime
 import time
-from CL_API import CLFactory
-from WP_API import WPSession
+from clapi import CLFactory
+from wpapi import WPSession
 
 
 # repeat the below at certain time(s) of day

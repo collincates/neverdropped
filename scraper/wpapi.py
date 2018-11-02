@@ -86,10 +86,9 @@ random_sleep = round(uniform(6, 8), 1)
 
 class WPSession():
     def __init__(self):
-        self.url = 'http://localhost:8888/motocl/xmlrpc.php'
-        self.user = 'collin' #base64 encode username, too?
-        self.password = 'CYcY7@5tHU1SXZ47' #base64 encoded version of my pass. Do this somewhere else for each session?
-        # self.password = '0wlL prfE pqjU 5ru0 OREt oa3V' #base64 encoded version of my pass. Do this somewhere else for each session?
+        self.url = None
+        self.user = None
+        self.password = None
         self.connection = None
         self.tags = []
         self.wp_post_objects = []
