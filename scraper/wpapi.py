@@ -1,3 +1,4 @@
+import os
 import sys
 import datetime
 from random import uniform
@@ -86,9 +87,9 @@ random_sleep = round(uniform(6, 8), 1)
 
 class WPSession():
     def __init__(self):
-        self.url = None
-        self.user = None
-        self.password = None
+        self.url = os.environ.get('WP_URL')
+        self.user = os.environ.get('WP_USER')
+        self.password = os.environ.get('WP_PASS')
         self.connection = None
         self.tags = []
         self.wp_post_objects = []
