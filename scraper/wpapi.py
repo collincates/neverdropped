@@ -9,80 +9,8 @@ from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import taxonomies, media
 from wordpress_xmlrpc.methods.posts import NewPost, GetPost, GetPosts
-# import base64
-
-# from wordpress_xmlrpc.methods.users import GetUserInfo
 
 random_sleep = round(uniform(6, 8), 1)
-
-
-# class WPPostObject():
-#     def __init__(self, cl_post_object, post_status='draft'):
-#         self.id = None
-#         self.post_status = post_status
-#         self.orig_url = cl_post_object.orig_url
-#         self.make = cl_post_object.make
-#         self.model = cl_post_object.model
-#         self.cl_id = cl_post_object.cl_id
-#         self.__name__ = cl_post_object.__name__
-#         self.title = cl_post_object.title
-#         self.price = cl_post_object.price
-#         self.location = cl_post_object.location
-#         self.cl_tags_from_author = cl_post_object.cl_tags_from_author
-#         self.body_text = cl_post_object.body_text
-#         self.when_posted = cl_post_object.when_posted
-#         self.image_links = cl_post_object.image_links
-#         self.attachment_id = None
-#
-#     def upload_images(self):
-#         """
-#         Read data from CL image URLs, upload a copy of images to WP DB
-#         in order to avoid directly linking to CL postings.
-#
-#         -!- HITS SERVER, NEEDS SLEEP -!-
-#
-#         """
-#
-#         img_links_from_wp_db = []
-#
-#         height = "450"
-#         width = "600"
-#         thumbnailed = False
-#
-#         for img in self.image_links:
-#
-#             # time.sleep(5)
-#             # image = WordPressMedia()
-#             # image._def['title'] = '{}_{:02d}.jpg'.format(cl_post_object['cl_id'], cl_post_object['images'].index(img))
-#             # image._def['parent'] = int(post_ident)
-#             # response = self.connection.call(media.UploadFile(image))
-#             # print(response._def['link'])
-#
-#             time.sleep(random_sleep)
-#
-#             data = {
-#             'name': '{}_{:02d}.jpg'.format(self.cl_id, self.image_links.index(img) + 1),
-#             'type': 'image/jpeg',
-#             'bits': xmlrpc_client.Binary(requests.get(img).content),
-#             }
-#             # data['bits'] = xmlrpc_client.Binary(requests.get(img).content)
-#
-#             response = self.connection.call(media.UploadFile(data))
-#
-#             if thumbnailed == False:
-#                 self.attachment_id = response['id']
-#                 thumbnailed = True
-#             else:
-#                 pass
-#
-#             img_links_from_wp_db.append(response['url'])
-#
-#         html_formatted_links = list(
-#             map(lambda link: f"<img src={link}>", wp_db_img_links)
-#             ) # height={height} width={width}>", wp_db_img_links))
-#
-#         print(html_formatted_links)
-
 
 
 class WPSession():
@@ -95,8 +23,11 @@ class WPSession():
         self.wp_post_objects = []
         self.connect()
         self.get_all_tags()
+
     def connect(self):
         self.connection = Client(self.url, self.user, self.password)
+        print("Connection established.")
+
     def get_all_tags(self):
         try:
             self.tags = self.connection.call(taxonomies.GetTerms('post_tag'))
@@ -129,13 +60,6 @@ class WPSession():
 
                     for img in object.image_links:
 
-                        # time.sleep(5)
-                        # image = WordPressMedia()
-                        # image._def['title'] = '{}_{:02d}.jpg'.format(cl_post_object['cl_id'], cl_post_object['images'].index(img))
-                        # image._def['parent'] = int(post_ident)
-                        # response = self.connection.call(media.UploadFile(image))
-                        # print(response._def['link'])
-
                         time.sleep(random_sleep)
 
                         data = {
@@ -157,9 +81,7 @@ class WPSession():
 
                     html_formatted_links = list(
                         map(lambda link: f"<img src={link}>", img_links_from_wp_db)
-                        ) # height={height} width={width}>", img_links_from_wp_db))
-
-
+                        )
 
                 # Create WordPressPost object for each new CL post,
                 # then append each WPP object to self.wp_post_objects
@@ -179,7 +101,6 @@ class WPSession():
                                 f"{object.body_text}\n" \
                                 f"{' '.join(html_formatted_links)}\n\n"
                                 f"Original Post: <a href={object.orig_url}>{object.orig_url}</a>"
-                                # "Original Post: " + f"<a href={object.orig_url}>{object.orig_url}</a>"
                 )
 
                 post.terms_names = {
@@ -222,7 +143,6 @@ class WPSession():
 
 
     def ping_posts(self):
-        # pass
         # get pages in batches of 20
         # offset = 0
         # increment = 20
@@ -234,7 +154,6 @@ class WPSession():
         #                 do_something(post)
         #         offset = offset + increment
 
-        # or use this code
         pub_and_draft_posts = self.connection.call(GetPosts({'post_status': ['publish', 'draft'], 'number': 1000}))
 
         for post in reversed(pub_and_draft_posts):
