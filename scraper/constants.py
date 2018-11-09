@@ -1103,800 +1103,800 @@ US_STATES = {
 
 URLS_USA = {    # 444 unique locations
      # "AK": [
-     #  "https://anchorage.craigslist.org",
-     #  "https://fairbanks.craigslist.org",
-     #  "https://kenai.craigslist.org",
-     #  "https://juneau.craigslist.org"
+     #  f"https://anchorage.{SITE_NAME}.org",
+     #  f"https://fairbanks.{SITE_NAME}.org",
+     #  f"https://kenai.{SITE_NAME}.org",
+     #  f"https://juneau.{SITE_NAME}.org"
      # ],
      # "AL": [
-     #  "https://auburn.craigslist.org",
-     #  "https://bham.craigslist.org",
-     #  "https://columbusga.craigslist.org",
-     #  "https://dothan.craigslist.org",
-     #  "https://shoals.craigslist.org",
-     #  "https://gadsden.craigslist.org",
-     #  "https://huntsville.craigslist.org",
-     #  "https://mobile.craigslist.org",
-     #  "https://montgomery.craigslist.org",
-     #  "https://tuscaloosa.craigslist.org"
+     #  f"https://auburn.{SITE_NAME}.org",
+     #  f"https://bham.{SITE_NAME}.org",
+     #  f"https://columbusga.{SITE_NAME}.org",
+     #  f"https://dothan.{SITE_NAME}.org",
+     #  f"https://shoals.{SITE_NAME}.org",
+     #  f"https://gadsden.{SITE_NAME}.org",
+     #  f"https://huntsville.{SITE_NAME}.org",
+     #  f"https://mobile.{SITE_NAME}.org",
+     #  f"https://montgomery.{SITE_NAME}.org",
+     #  f"https://tuscaloosa.{SITE_NAME}.org"
      # ],
      "AR": [
-      "https://fayar.craigslist.org",
-      "https://fortsmith.craigslist.org",
-      "https://jonesboro.craigslist.org",
-      "https://littlerock.craigslist.org",
-      "https://memphis.craigslist.org",
-      "https://texarkana.craigslist.org"
+      f"https://fayar.{SITE_NAME}.org",
+      f"https://fortsmith.{SITE_NAME}.org",
+      f"https://jonesboro.{SITE_NAME}.org",
+      f"https://littlerock.{SITE_NAME}.org",
+      f"https://memphis.{SITE_NAME}.org",
+      f"https://texarkana.{SITE_NAME}.org"
      ],
      "AZ": [
-      "https://flagstaff.craigslist.org",
-      "https://mohave.craigslist.org",
-      "https://phoenix.craigslist.org",
-      "https://prescott.craigslist.org",
-      "https://showlow.craigslist.org",
-      "https://sierravista.craigslist.org",
-      "https://tucson.craigslist.org",
-      "https://yuma.craigslist.org"
+      f"https://flagstaff.{SITE_NAME}.org",
+      f"https://mohave.{SITE_NAME}.org",
+      f"https://phoenix.{SITE_NAME}.org",
+      f"https://prescott.{SITE_NAME}.org",
+      f"https://showlow.{SITE_NAME}.org",
+      f"https://sierravista.{SITE_NAME}.org",
+      f"https://tucson.{SITE_NAME}.org",
+      f"https://yuma.{SITE_NAME}.org"
      ],
      # "CA": [
-     #  "https://bakersfield.craigslist.org",
-     #  "https://chico.craigslist.org",
-     #  "https://fresno.craigslist.org",
-     #  "https://goldcountry.craigslist.org",
-     #  "https://hanford.craigslist.org",
-     #  "https://humboldt.craigslist.org",
-     #  "https://imperial.craigslist.org",
-     #  "https://inlandempire.craigslist.org",
-     #  "https://losangeles.craigslist.org",
-     #  "https://mendocino.craigslist.org",
-     #  "https://merced.craigslist.org",
-     #  "https://modesto.craigslist.org",
-     #  "https://monterey.craigslist.org",
-     #  "https://orangecounty.craigslist.org",
-     #  "https://palmsprings.craigslist.org",
-     #  "https://redding.craigslist.org",
-     #  "https://reno.craigslist.org",
-     #  "https://sacramento.craigslist.org",
-     #  "https://sandiego.craigslist.org",
-     #  "https://slo.craigslist.org",
-     #  "https://santabarbara.craigslist.org",
-     #  "https://santamaria.craigslist.org",
-     #  "https://sfbay.craigslist.org",
-     #  "https://siskiyou.craigslist.org",
-     #  "https://stockton.craigslist.org",
-     #  "https://susanville.craigslist.org",
-     #  "https://ventura.craigslist.org",
-     #  "https://visalia.craigslist.org",
-     #  "https://yubasutter.craigslist.org"
+     #  f"https://bakersfield.{SITE_NAME}.org",
+     #  f"https://chico.{SITE_NAME}.org",
+     #  f"https://fresno.{SITE_NAME}.org",
+     #  f"https://goldcountry.{SITE_NAME}.org",
+     #  f"https://hanford.{SITE_NAME}.org",
+     #  f"https://humboldt.{SITE_NAME}.org",
+     #  f"https://imperial.{SITE_NAME}.org",
+     #  f"https://inlandempire.{SITE_NAME}.org",
+     #  f"https://losangeles.{SITE_NAME}.org",
+     #  f"https://mendocino.{SITE_NAME}.org",
+     #  f"https://merced.{SITE_NAME}.org",
+     #  f"https://modesto.{SITE_NAME}.org",
+     #  f"https://monterey.{SITE_NAME}.org",
+     #  f"https://orangecounty.{SITE_NAME}.org",
+     #  f"https://palmsprings.{SITE_NAME}.org",
+     #  f"https://redding.{SITE_NAME}.org",
+     #  f"https://reno.{SITE_NAME}.org",
+     #  f"https://sacramento.{SITE_NAME}.org",
+     #  f"https://sandiego.{SITE_NAME}.org",
+     #  f"https://slo.{SITE_NAME}.org",
+     #  f"https://santabarbara.{SITE_NAME}.org",
+     #  f"https://santamaria.{SITE_NAME}.org",
+     #  f"https://sfbay.{SITE_NAME}.org",
+     #  f"https://siskiyou.{SITE_NAME}.org",
+     #  f"https://stockton.{SITE_NAME}.org",
+     #  f"https://susanville.{SITE_NAME}.org",
+     #  f"https://ventura.{SITE_NAME}.org",
+     #  f"https://visalia.{SITE_NAME}.org",
+     #  f"https://yubasutter.{SITE_NAME}.org"
      # ],
      # "CO": [
-     #  "https://boulder.craigslist.org",
-     #  "https://cosprings.craigslist.org",
-     #  "https://denver.craigslist.org",
-     #  "https://eastco.craigslist.org",
-     #  "https://fortcollins.craigslist.org",
-     #  "https://rockies.craigslist.org",
-     #  "https://pueblo.craigslist.org",
-     #  "https://westslope.craigslist.org"
+     #  f"https://boulder.{SITE_NAME}.org",
+     #  f"https://cosprings.{SITE_NAME}.org",
+     #  f"https://denver.{SITE_NAME}.org",
+     #  f"https://eastco.{SITE_NAME}.org",
+     #  f"https://fortcollins.{SITE_NAME}.org",
+     #  f"https://rockies.{SITE_NAME}.org",
+     #  f"https://pueblo.{SITE_NAME}.org",
+     #  f"https://westslope.{SITE_NAME}.org"
      # ],
      # "CT": [
-     #  "https://newlondon.craigslist.org",
-     #  "https://hartford.craigslist.org",
-     #  "https://newhaven.craigslist.org",
-     #  "https://nwct.craigslist.org",
-     #  "https://newyork.craigslist.org/fct/"
+     #  f"https://newlondon.{SITE_NAME}.org",
+     #  f"https://hartford.{SITE_NAME}.org",
+     #  f"https://newhaven.{SITE_NAME}.org",
+     #  f"https://nwct.{SITE_NAME}.org",
+     #  f"https://newyork.{SITE_NAME}.org/fct/"
      # ],
      # "DE": [
-     #  "https://delaware.craigslist.org/"
+     #  f"https://delaware.{SITE_NAME}.org/"
      # ],
      # "FL": [
-     #  "https://daytona.craigslist.org",
-     #  "https://keys.craigslist.org",
-     #  "https://fortmyers.craigslist.org",
-     #  "https://gainesville.craigslist.org",
-     #  "https://cfl.craigslist.org",
-     #  "https://jacksonville.craigslist.org",
-     #  "https://lakeland.craigslist.org",
-     #  "https://lakecity.craigslist.org",
-     #  "https://ocala.craigslist.org",
-     #  "https://okaloosa.craigslist.org",
-     #  "https://orlando.craigslist.org",
-     #  "https://panamacity.craigslist.org",
-     #  "https://pensacola.craigslist.org",
-     #  "https://sarasota.craigslist.org",
-     #  "https://miami.craigslist.org",
-     #  "https://spacecoast.craigslist.org",
-     #  "https://staugustine.craigslist.org",
-     #  "https://tallahassee.craigslist.org",
-     #  "https://tampa.craigslist.org",
-     #  "https://treasure.craigslist.org"
+     #  f"https://daytona.{SITE_NAME}.org",
+     #  f"https://keys.{SITE_NAME}.org",
+     #  f"https://fortmyers.{SITE_NAME}.org",
+     #  f"https://gainesville.{SITE_NAME}.org",
+     #  f"https://cfl.{SITE_NAME}.org",
+     #  f"https://jacksonville.{SITE_NAME}.org",
+     #  f"https://lakeland.{SITE_NAME}.org",
+     #  f"https://lakecity.{SITE_NAME}.org",
+     #  f"https://ocala.{SITE_NAME}.org",
+     #  f"https://okaloosa.{SITE_NAME}.org",
+     #  f"https://orlando.{SITE_NAME}.org",
+     #  f"https://panamacity.{SITE_NAME}.org",
+     #  f"https://pensacola.{SITE_NAME}.org",
+     #  f"https://sarasota.{SITE_NAME}.org",
+     #  f"https://miami.{SITE_NAME}.org",
+     #  f"https://spacecoast.{SITE_NAME}.org",
+     #  f"https://staugustine.{SITE_NAME}.org",
+     #  f"https://tallahassee.{SITE_NAME}.org",
+     #  f"https://tampa.{SITE_NAME}.org",
+     #  f"https://treasure.{SITE_NAME}.org"
      # ],
      # "GA": [
-     #  "https://albanyga.craigslist.org",
-     #  "https://athensga.craigslist.org",
-     #  "https://atlanta.craigslist.org",
-     #  "https://augusta.craigslist.org",
-     #  "https://brunswick.craigslist.org",
-     #  "https://columbusga.craigslist.org",
-     #  "https://macon.craigslist.org",
-     #  "https://nwga.craigslist.org",
-     #  "https://savannah.craigslist.org",
-     #  "https://statesboro.craigslist.org",
-     #  "https://valdosta.craigslist.org"
+     #  f"https://albanyga.{SITE_NAME}.org",
+     #  f"https://athensga.{SITE_NAME}.org",
+     #  f"https://atlanta.{SITE_NAME}.org",
+     #  f"https://augusta.{SITE_NAME}.org",
+     #  f"https://brunswick.{SITE_NAME}.org",
+     #  f"https://columbusga.{SITE_NAME}.org",
+     #  f"https://macon.{SITE_NAME}.org",
+     #  f"https://nwga.{SITE_NAME}.org",
+     #  f"https://savannah.{SITE_NAME}.org",
+     #  f"https://statesboro.{SITE_NAME}.org",
+     #  f"https://valdosta.{SITE_NAME}.org"
      # ],
      # "HI": [
-     #  "https://honolulu.craigslist.org/"
+     #  f"https://honolulu.{SITE_NAME}.org/"
      # ],
      # "IA": [
-     #  "https://ames.craigslist.org",
-     #  "https://cedarrapids.craigslist.org",
-     #  "https://desmoines.craigslist.org",
-     #  "https://dubuque.craigslist.org",
-     #  "https://fortdodge.craigslist.org",
-     #  "https://iowacity.craigslist.org",
-     #  "https://masoncity.craigslist.org",
-     #  "https://omaha.craigslist.org",
-     #  "https://quadcities.craigslist.org",
-     #  "https://siouxcity.craigslist.org",
-     #  "https://ottumwa.craigslist.org",
-     #  "https://waterloo.craigslist.org"
+     #  f"https://ames.{SITE_NAME}.org",
+     #  f"https://cedarrapids.{SITE_NAME}.org",
+     #  f"https://desmoines.{SITE_NAME}.org",
+     #  f"https://dubuque.{SITE_NAME}.org",
+     #  f"https://fortdodge.{SITE_NAME}.org",
+     #  f"https://iowacity.{SITE_NAME}.org",
+     #  f"https://masoncity.{SITE_NAME}.org",
+     #  f"https://omaha.{SITE_NAME}.org",
+     #  f"https://quadcities.{SITE_NAME}.org",
+     #  f"https://siouxcity.{SITE_NAME}.org",
+     #  f"https://ottumwa.{SITE_NAME}.org",
+     #  f"https://waterloo.{SITE_NAME}.org"
      # ],
      # "ID": [
-     #  "https://boise.craigslist.org",
-     #  "https://eastidaho.craigslist.org",
-     #  "https://lewiston.craigslist.org",
-     #  "https://pullman.craigslist.org",
-     #  "https://spokane.craigslist.org",
-     #  "https://twinfalls.craigslist.org"
+     #  f"https://boise.{SITE_NAME}.org",
+     #  f"https://eastidaho.{SITE_NAME}.org",
+     #  f"https://lewiston.{SITE_NAME}.org",
+     #  f"https://pullman.{SITE_NAME}.org",
+     #  f"https://spokane.{SITE_NAME}.org",
+     #  f"https://twinfalls.{SITE_NAME}.org"
      # ],
      # "IL": [
-     #  "https://bn.craigslist.org",
-     #  "https://chambana.craigslist.org",
-     #  "https://chicago.craigslist.org",
-     #  "https://decatur.craigslist.org",
-     #  "https://lasalle.craigslist.org",
-     #  "https://mattoon.craigslist.org",
-     #  "https://peoria.craigslist.org",
-     #  "https://quadcities.craigslist.org",
-     #  "https://rockford.craigslist.org",
-     #  "https://carbondale.craigslist.org",
-     #  "https://springfieldil.craigslist.org",
-     #  "https://stlouis.craigslist.org",
-     #  "https://quincy.craigslist.org"
+     #  f"https://bn.{SITE_NAME}.org",
+     #  f"https://chambana.{SITE_NAME}.org",
+     #  f"https://chicago.{SITE_NAME}.org",
+     #  f"https://decatur.{SITE_NAME}.org",
+     #  f"https://lasalle.{SITE_NAME}.org",
+     #  f"https://mattoon.{SITE_NAME}.org",
+     #  f"https://peoria.{SITE_NAME}.org",
+     #  f"https://quadcities.{SITE_NAME}.org",
+     #  f"https://rockford.{SITE_NAME}.org",
+     #  f"https://carbondale.{SITE_NAME}.org",
+     #  f"https://springfieldil.{SITE_NAME}.org",
+     #  f"https://stlouis.{SITE_NAME}.org",
+     #  f"https://quincy.{SITE_NAME}.org"
      # ],
      # "IN": [
-     #  "https://bloomington.craigslist.org",
-     #  "https://evansville.craigslist.org",
-     #  "https://fortwayne.craigslist.org",
-     #  "https://indianapolis.craigslist.org",
-     #  "https://kokomo.craigslist.org",
-     #  "https://tippecanoe.craigslist.org",
-     #  "https://muncie.craigslist.org",
-     #  "https://richmondin.craigslist.org",
-     #  "https://southbend.craigslist.org",
-     #  "https://terrehaute.craigslist.org",
-     #  "https://chicago.craigslist.org/nwi/"
+     #  f"https://bloomington.{SITE_NAME}.org",
+     #  f"https://evansville.{SITE_NAME}.org",
+     #  f"https://fortwayne.{SITE_NAME}.org",
+     #  f"https://indianapolis.{SITE_NAME}.org",
+     #  f"https://kokomo.{SITE_NAME}.org",
+     #  f"https://tippecanoe.{SITE_NAME}.org",
+     #  f"https://muncie.{SITE_NAME}.org",
+     #  f"https://richmondin.{SITE_NAME}.org",
+     #  f"https://southbend.{SITE_NAME}.org",
+     #  f"https://terrehaute.{SITE_NAME}.org",
+     #  f"https://chicago.{SITE_NAME}.org/nwi/"
      # ],
      # "KS": [
-     #  "https://kansascity.craigslist.org",
-     #  "https://lawrence.craigslist.org",
-     #  "https://ksu.craigslist.org",
-     #  "https://nwks.craigslist.org",
-     #  "https://salina.craigslist.org",
-     #  "https://seks.craigslist.org",
-     #  "https://swks.craigslist.org",
-     #  "https://topeka.craigslist.org",
-     #  "https://wichita.craigslist.org"
+     #  f"https://kansascity.{SITE_NAME}.org",
+     #  f"https://lawrence.{SITE_NAME}.org",
+     #  f"https://ksu.{SITE_NAME}.org",
+     #  f"https://nwks.{SITE_NAME}.org",
+     #  f"https://salina.{SITE_NAME}.org",
+     #  f"https://seks.{SITE_NAME}.org",
+     #  f"https://swks.{SITE_NAME}.org",
+     #  f"https://topeka.{SITE_NAME}.org",
+     #  f"https://wichita.{SITE_NAME}.org"
      # ],
      # "KY": [
-     #  "https://bgky.craigslist.org",
-     #  "https://cincinnati.craigslist.org",
-     #  "https://eastky.craigslist.org",
-     #  "https://huntington.craigslist.org",
-     #  "https://lexington.craigslist.org",
-     #  "https://louisville.craigslist.org",
-     #  "https://owensboro.craigslist.org",
-     #  "https://westky.craigslist.org"
+     #  f"https://bgky.{SITE_NAME}.org",
+     #  f"https://cincinnati.{SITE_NAME}.org",
+     #  f"https://eastky.{SITE_NAME}.org",
+     #  f"https://huntington.{SITE_NAME}.org",
+     #  f"https://lexington.{SITE_NAME}.org",
+     #  f"https://louisville.{SITE_NAME}.org",
+     #  f"https://owensboro.{SITE_NAME}.org",
+     #  f"https://westky.{SITE_NAME}.org"
      # ],
      # "LA": [
-     #  "https://batonrouge.craigslist.org",
-     #  "https://cenla.craigslist.org",
-     #  "https://houma.craigslist.org",
-     #  "https://lafayette.craigslist.org",
-     #  "https://lakecharles.craigslist.org",
-     #  "https://monroe.craigslist.org",
-     #  "https://neworleans.craigslist.org",
-     #  "https://shreveport.craigslist.org"
+     #  f"https://batonrouge.{SITE_NAME}.org",
+     #  f"https://cenla.{SITE_NAME}.org",
+     #  f"https://houma.{SITE_NAME}.org",
+     #  f"https://lafayette.{SITE_NAME}.org",
+     #  f"https://lakecharles.{SITE_NAME}.org",
+     #  f"https://monroe.{SITE_NAME}.org",
+     #  f"https://neworleans.{SITE_NAME}.org",
+     #  f"https://shreveport.{SITE_NAME}.org"
      # ],
      # "MA": [
-     #  "https://boston.craigslist.org",
-     #  "https://capecod.craigslist.org",
-     #  "https://southcoast.craigslist.org",
-     #  "https://westernmass.craigslist.org",
-     #  "https://worcester.craigslist.org"
+     #  f"https://boston.{SITE_NAME}.org",
+     #  f"https://capecod.{SITE_NAME}.org",
+     #  f"https://southcoast.{SITE_NAME}.org",
+     #  f"https://westernmass.{SITE_NAME}.org",
+     #  f"https://worcester.{SITE_NAME}.org"
      # ],
      # "MD": [
-     #  "https://annapolis.craigslist.org",
-     #  "https://baltimore.craigslist.org",
-     #  "https://chambersburg.craigslist.org",
-     #  "https://easternshore.craigslist.org",
-     #  "https://frederick.craigslist.org",
-     #  "https://smd.craigslist.org",
-     #  "https://westmd.craigslist.org",
-     #  "https://washingtondc.craigslist.org/mld/"
+     #  f"https://annapolis.{SITE_NAME}.org",
+     #  f"https://baltimore.{SITE_NAME}.org",
+     #  f"https://chambersburg.{SITE_NAME}.org",
+     #  f"https://easternshore.{SITE_NAME}.org",
+     #  f"https://frederick.{SITE_NAME}.org",
+     #  f"https://smd.{SITE_NAME}.org",
+     #  f"https://westmd.{SITE_NAME}.org",
+     #  f"https://washingtondc.{SITE_NAME}.org/mld/"
      # ],
      # "ME": [
-     #  "https://maine.craigslist.org/"
+     #  f"https://maine.{SITE_NAME}.org/"
      # ],
      # "MI": [
-     #  "https://annarbor.craigslist.org",
-     #  "https://battlecreek.craigslist.org",
-     #  "https://centralmich.craigslist.org",
-     #  "https://detroit.craigslist.org",
-     #  "https://flint.craigslist.org",
-     #  "https://grandrapids.craigslist.org",
-     #  "https://holland.craigslist.org",
-     #  "https://jxn.craigslist.org",
-     #  "https://kalamazoo.craigslist.org",
-     #  "https://lansing.craigslist.org",
-     #  "https://monroemi.craigslist.org",
-     #  "https://muskegon.craigslist.org",
-     #  "https://nmi.craigslist.org",
-     #  "https://porthuron.craigslist.org",
-     #  "https://saginaw.craigslist.org",
-     #  "https://southbend.craigslist.org",
-     #  "https://swmi.craigslist.org",
-     #  "https://thumb.craigslist.org",
-     #  "https://up.craigslist.org"
+     #  f"https://annarbor.{SITE_NAME}.org",
+     #  f"https://battlecreek.{SITE_NAME}.org",
+     #  f"https://centralmich.{SITE_NAME}.org",
+     #  f"https://detroit.{SITE_NAME}.org",
+     #  f"https://flint.{SITE_NAME}.org",
+     #  f"https://grandrapids.{SITE_NAME}.org",
+     #  f"https://holland.{SITE_NAME}.org",
+     #  f"https://jxn.{SITE_NAME}.org",
+     #  f"https://kalamazoo.{SITE_NAME}.org",
+     #  f"https://lansing.{SITE_NAME}.org",
+     #  f"https://monroemi.{SITE_NAME}.org",
+     #  f"https://muskegon.{SITE_NAME}.org",
+     #  f"https://nmi.{SITE_NAME}.org",
+     #  f"https://porthuron.{SITE_NAME}.org",
+     #  f"https://saginaw.{SITE_NAME}.org",
+     #  f"https://southbend.{SITE_NAME}.org",
+     #  f"https://swmi.{SITE_NAME}.org",
+     #  f"https://thumb.{SITE_NAME}.org",
+     #  f"https://up.{SITE_NAME}.org"
      # ],
      # "MN": [
-     #  "https://bemidji.craigslist.org",
-     #  "https://brainerd.craigslist.org",
-     #  "https://duluth.craigslist.org",
-     #  "https://fargo.craigslist.org",
-     #  "https://mankato.craigslist.org",
-     #  "https://minneapolis.craigslist.org",
-     #  "https://rmn.craigslist.org",
-     #  "https://marshall.craigslist.org",
-     #  "https://stcloud.craigslist.org"
+     #  f"https://bemidji.{SITE_NAME}.org",
+     #  f"https://brainerd.{SITE_NAME}.org",
+     #  f"https://duluth.{SITE_NAME}.org",
+     #  f"https://fargo.{SITE_NAME}.org",
+     #  f"https://mankato.{SITE_NAME}.org",
+     #  f"https://minneapolis.{SITE_NAME}.org",
+     #  f"https://rmn.{SITE_NAME}.org",
+     #  f"https://marshall.{SITE_NAME}.org",
+     #  f"https://stcloud.{SITE_NAME}.org"
      # ],
      # "MO": [
-     #  "https://columbiamo.craigslist.org",
-     #  "https://joplin.craigslist.org",
-     #  "https://kansascity.craigslist.org",
-     #  "https://kirksville.craigslist.org",
-     #  "https://loz.craigslist.org",
-     #  "https://semo.craigslist.org",
-     #  "https://springfield.craigslist.org",
-     #  "https://stjoseph.craigslist.org",
-     #  "https://stlouis.craigslist.org"
+     #  f"https://columbiamo.{SITE_NAME}.org",
+     #  f"https://joplin.{SITE_NAME}.org",
+     #  f"https://kansascity.{SITE_NAME}.org",
+     #  f"https://kirksville.{SITE_NAME}.org",
+     #  f"https://loz.{SITE_NAME}.org",
+     #  f"https://semo.{SITE_NAME}.org",
+     #  f"https://springfield.{SITE_NAME}.org",
+     #  f"https://stjoseph.{SITE_NAME}.org",
+     #  f"https://stlouis.{SITE_NAME}.org"
      # ],
      # "MS": [
-     #  "https://gulfport.craigslist.org",
-     #  "https://hattiesburg.craigslist.org",
-     #  "https://jackson.craigslist.org",
-     #  "https://memphis.craigslist.org",
-     #  "https://meridian.craigslist.org",
-     #  "https://northmiss.craigslist.org",
-     #  "https://natchez.craigslist.org"
+     #  f"https://gulfport.{SITE_NAME}.org",
+     #  f"https://hattiesburg.{SITE_NAME}.org",
+     #  f"https://jackson.{SITE_NAME}.org",
+     #  f"https://memphis.{SITE_NAME}.org",
+     #  f"https://meridian.{SITE_NAME}.org",
+     #  f"https://northmiss.{SITE_NAME}.org",
+     #  f"https://natchez.{SITE_NAME}.org"
      # ],
      # "MT": [
-     #  "https://billings.craigslist.org",
-     #  "https://bozeman.craigslist.org",
-     #  "https://butte.craigslist.org",
-     #  "https://montana.craigslist.org",
-     #  "https://greatfalls.craigslist.org",
-     #  "https://helena.craigslist.org",
-     #  "https://kalispell.craigslist.org",
-     #  "https://missoula.craigslist.org"
+     #  f"https://billings.{SITE_NAME}.org",
+     #  f"https://bozeman.{SITE_NAME}.org",
+     #  f"https://butte.{SITE_NAME}.org",
+     #  f"https://montana.{SITE_NAME}.org",
+     #  f"https://greatfalls.{SITE_NAME}.org",
+     #  f"https://helena.{SITE_NAME}.org",
+     #  f"https://kalispell.{SITE_NAME}.org",
+     #  f"https://missoula.{SITE_NAME}.org"
      # ],
      # "NC": [
-     #  "https://asheville.craigslist.org",
-     #  "https://boone.craigslist.org",
-     #  "https://charlotte.craigslist.org",
-     #  "https://eastnc.craigslist.org",
-     #  "https://fayetteville.craigslist.org",
-     #  "https://greensboro.craigslist.org",
-     #  "https://hickory.craigslist.org",
-     #  "https://onslow.craigslist.org",
-     #  "https://outerbanks.craigslist.org",
-     #  "https://raleigh.craigslist.org",
-     #  "https://wilmington.craigslist.org",
-     #  "https://winstonsalem.craigslist.org"
+     #  f"https://asheville.{SITE_NAME}.org",
+     #  f"https://boone.{SITE_NAME}.org",
+     #  f"https://charlotte.{SITE_NAME}.org",
+     #  f"https://eastnc.{SITE_NAME}.org",
+     #  f"https://fayetteville.{SITE_NAME}.org",
+     #  f"https://greensboro.{SITE_NAME}.org",
+     #  f"https://hickory.{SITE_NAME}.org",
+     #  f"https://onslow.{SITE_NAME}.org",
+     #  f"https://outerbanks.{SITE_NAME}.org",
+     #  f"https://raleigh.{SITE_NAME}.org",
+     #  f"https://wilmington.{SITE_NAME}.org",
+     #  f"https://winstonsalem.{SITE_NAME}.org"
      # ],
      # "ND": [
-     #  "https://bismarck.craigslist.org",
-     #  "https://fargo.craigslist.org",
-     #  "https://grandforks.craigslist.org",
-     #  "https://nd.craigslist.org"
+     #  f"https://bismarck.{SITE_NAME}.org",
+     #  f"https://fargo.{SITE_NAME}.org",
+     #  f"https://grandforks.{SITE_NAME}.org",
+     #  f"https://nd.{SITE_NAME}.org"
      # ],
      # "NE": [
-     #  "https://grandisland.craigslist.org",
-     #  "https://lincoln.craigslist.org",
-     #  "https://northplatte.craigslist.org",
-     #  "https://omaha.craigslist.org",
-     #  "https://scottsbluff.craigslist.org",
-     #  "https://siouxcity.craigslist.org"
+     #  f"https://grandisland.{SITE_NAME}.org",
+     #  f"https://lincoln.{SITE_NAME}.org",
+     #  f"https://northplatte.{SITE_NAME}.org",
+     #  f"https://omaha.{SITE_NAME}.org",
+     #  f"https://scottsbluff.{SITE_NAME}.org",
+     #  f"https://siouxcity.{SITE_NAME}.org"
      # ],
      # "NH": [
-     #  "https://nh.craigslist.org/"
+     #  f"https://nh.{SITE_NAME}.org/"
      # ],
      # "NJ": [
-     #  "https://cnj.craigslist.org",
-     #  "https://jerseyshore.craigslist.org",
-     #  "https://newjersey.craigslist.org",
-     #  "https://southjersey.craigslist.org",
-     #  "https://newyork.craigslist.org/jsy/"
+     #  f"https://cnj.{SITE_NAME}.org",
+     #  f"https://jerseyshore.{SITE_NAME}.org",
+     #  f"https://newjersey.{SITE_NAME}.org",
+     #  f"https://southjersey.{SITE_NAME}.org",
+     #  f"https://newyork.{SITE_NAME}.org/jsy/"
      # ],
      # "NM": [
-     #  "https://albuquerque.craigslist.org",
-     #  "https://clovis.craigslist.org",
-     #  "https://farmington.craigslist.org",
-     #  "https://lascruces.craigslist.org",
-     #  "https://roswell.craigslist.org",
-     #  "https://santafe.craigslist.org"
+     #  f"https://albuquerque.{SITE_NAME}.org",
+     #  f"https://clovis.{SITE_NAME}.org",
+     #  f"https://farmington.{SITE_NAME}.org",
+     #  f"https://lascruces.{SITE_NAME}.org",
+     #  f"https://roswell.{SITE_NAME}.org",
+     #  f"https://santafe.{SITE_NAME}.org"
      # ],
      # "NV": [
-     #  "https://elko.craigslist.org",
-     #  "https://lasvegas.craigslist.org",
-     #  "https://reno.craigslist.org"
+     #  f"https://elko.{SITE_NAME}.org",
+     #  f"https://lasvegas.{SITE_NAME}.org",
+     #  f"https://reno.{SITE_NAME}.org"
      # ],
      # "NY": [
-     #  "https://albany.craigslist.org",
-     #  "https://binghamton.craigslist.org",
-     #  "https://buffalo.craigslist.org",
-     #  "https://catskills.craigslist.org",
-     #  "https://chautauqua.craigslist.org",
-     #  "https://elmira.craigslist.org",
-     #  "https://fingerlakes.craigslist.org",
-     #  "https://glensfalls.craigslist.org",
-     #  "https://hudsonvalley.craigslist.org",
-     #  "https://ithaca.craigslist.org",
-     #  "https://longisland.craigslist.org",
-     #  "https://newyork.craigslist.org",
-     #  "https://oneonta.craigslist.org",
-     #  "https://plattsburgh.craigslist.org",
-     #  "https://potsdam.craigslist.org",
-     #  "https://rochester.craigslist.org",
-     #  "https://syracuse.craigslist.org",
-     #  "https://twintiers.craigslist.org",
-     #  "https://utica.craigslist.org",
-     #  "https://watertown.craigslist.org"
+     #  f"https://albany.{SITE_NAME}.org",
+     #  f"https://binghamton.{SITE_NAME}.org",
+     #  f"https://buffalo.{SITE_NAME}.org",
+     #  f"https://catskills.{SITE_NAME}.org",
+     #  f"https://chautauqua.{SITE_NAME}.org",
+     #  f"https://elmira.{SITE_NAME}.org",
+     #  f"https://fingerlakes.{SITE_NAME}.org",
+     #  f"https://glensfalls.{SITE_NAME}.org",
+     #  f"https://hudsonvalley.{SITE_NAME}.org",
+     #  f"https://ithaca.{SITE_NAME}.org",
+     #  f"https://longisland.{SITE_NAME}.org",
+     #  f"https://newyork.{SITE_NAME}.org",
+     #  f"https://oneonta.{SITE_NAME}.org",
+     #  f"https://plattsburgh.{SITE_NAME}.org",
+     #  f"https://potsdam.{SITE_NAME}.org",
+     #  f"https://rochester.{SITE_NAME}.org",
+     #  f"https://syracuse.{SITE_NAME}.org",
+     #  f"https://twintiers.{SITE_NAME}.org",
+     #  f"https://utica.{SITE_NAME}.org",
+     #  f"https://watertown.{SITE_NAME}.org"
      # ],
      # "OH": [
-     #  "https://akroncanton.craigslist.org",
-     #  "https://ashtabula.craigslist.org",
-     #  "https://athensohio.craigslist.org",
-     #  "https://chillicothe.craigslist.org",
-     #  "https://cincinnati.craigslist.org",
-     #  "https://cleveland.craigslist.org",
-     #  "https://columbus.craigslist.org",
-     #  "https://dayton.craigslist.org",
-     #  "https://huntington.craigslist.org",
-     #  "https://limaohio.craigslist.org",
-     #  "https://mansfield.craigslist.org",
-     #  "https://wheeling.craigslist.org",
-     #  "https://parkersburg.craigslist.org",
-     #  "https://sandusky.craigslist.org",
-     #  "https://toledo.craigslist.org",
-     #  "https://tuscarawas.craigslist.org",
-     #  "https://youngstown.craigslist.org",
-     #  "https://zanesville.craigslist.org"
+     #  f"https://akroncanton.{SITE_NAME}.org",
+     #  f"https://ashtabula.{SITE_NAME}.org",
+     #  f"https://athensohio.{SITE_NAME}.org",
+     #  f"https://chillicothe.{SITE_NAME}.org",
+     #  f"https://cincinnati.{SITE_NAME}.org",
+     #  f"https://cleveland.{SITE_NAME}.org",
+     #  f"https://columbus.{SITE_NAME}.org",
+     #  f"https://dayton.{SITE_NAME}.org",
+     #  f"https://huntington.{SITE_NAME}.org",
+     #  f"https://limaohio.{SITE_NAME}.org",
+     #  f"https://mansfield.{SITE_NAME}.org",
+     #  f"https://wheeling.{SITE_NAME}.org",
+     #  f"https://parkersburg.{SITE_NAME}.org",
+     #  f"https://sandusky.{SITE_NAME}.org",
+     #  f"https://toledo.{SITE_NAME}.org",
+     #  f"https://tuscarawas.{SITE_NAME}.org",
+     #  f"https://youngstown.{SITE_NAME}.org",
+     #  f"https://zanesville.{SITE_NAME}.org"
      # ],
      # "OK": [
-     #  "https://fortsmith.craigslist.org",
-     #  "https://lawton.craigslist.org",
-     #  "https://enid.craigslist.org",
-     #  "https://oklahomacity.craigslist.org",
-     #  "https://stillwater.craigslist.org",
-     #  "https://texoma.craigslist.org",
-     #  "https://tulsa.craigslist.org"
+     #  f"https://fortsmith.{SITE_NAME}.org",
+     #  f"https://lawton.{SITE_NAME}.org",
+     #  f"https://enid.{SITE_NAME}.org",
+     #  f"https://oklahomacity.{SITE_NAME}.org",
+     #  f"https://stillwater.{SITE_NAME}.org",
+     #  f"https://texoma.{SITE_NAME}.org",
+     #  f"https://tulsa.{SITE_NAME}.org"
      # ],
      # "OR": [
-     #  "https://bend.craigslist.org",
-     #  "https://corvallis.craigslist.org",
-     #  "https://eastoregon.craigslist.org",
-     #  "https://eugene.craigslist.org",
-     #  "https://klamath.craigslist.org",
-     #  "https://medford.craigslist.org",
-     #  "https://oregoncoast.craigslist.org",
-     #  "https://portland.craigslist.org",
-     #  "https://roseburg.craigslist.org",
-     #  "https://salem.craigslist.org"
+     #  f"https://bend.{SITE_NAME}.org",
+     #  f"https://corvallis.{SITE_NAME}.org",
+     #  f"https://eastoregon.{SITE_NAME}.org",
+     #  f"https://eugene.{SITE_NAME}.org",
+     #  f"https://klamath.{SITE_NAME}.org",
+     #  f"https://medford.{SITE_NAME}.org",
+     #  f"https://oregoncoast.{SITE_NAME}.org",
+     #  f"https://portland.{SITE_NAME}.org",
+     #  f"https://roseburg.{SITE_NAME}.org",
+     #  f"https://salem.{SITE_NAME}.org"
      # ],
      # "PA": [
-     #  "https://altoona.craigslist.org",
-     #  "https://chambersburg.craigslist.org",
-     #  "https://erie.craigslist.org",
-     #  "https://harrisburg.craigslist.org",
-     #  "https://lancaster.craigslist.org",
-     #  "https://allentown.craigslist.org",
-     #  "https://meadville.craigslist.org",
-     #  "https://philadelphia.craigslist.org",
-     #  "https://pittsburgh.craigslist.org",
-     #  "https://poconos.craigslist.org",
-     #  "https://reading.craigslist.org",
-     #  "https://scranton.craigslist.org",
-     #  "https://pennstate.craigslist.org",
-     #  "https://twintiers.craigslist.org",
-     #  "https://williamsport.craigslist.org",
-     #  "https://york.craigslist.org"
+     #  f"https://altoona.{SITE_NAME}.org",
+     #  f"https://chambersburg.{SITE_NAME}.org",
+     #  f"https://erie.{SITE_NAME}.org",
+     #  f"https://harrisburg.{SITE_NAME}.org",
+     #  f"https://lancaster.{SITE_NAME}.org",
+     #  f"https://allentown.{SITE_NAME}.org",
+     #  f"https://meadville.{SITE_NAME}.org",
+     #  f"https://philadelphia.{SITE_NAME}.org",
+     #  f"https://pittsburgh.{SITE_NAME}.org",
+     #  f"https://poconos.{SITE_NAME}.org",
+     #  f"https://reading.{SITE_NAME}.org",
+     #  f"https://scranton.{SITE_NAME}.org",
+     #  f"https://pennstate.{SITE_NAME}.org",
+     #  f"https://twintiers.{SITE_NAME}.org",
+     #  f"https://williamsport.{SITE_NAME}.org",
+     #  f"https://york.{SITE_NAME}.org"
      # ],
      # "RI": [
-     #  "https://providence.craigslist.org/"
+     #  f"https://providence.{SITE_NAME}.org/"
      # ],
      # "SC": [
-     #  "https://charleston.craigslist.org",
-     #  "https://columbia.craigslist.org",
-     #  "https://florencesc.craigslist.org",
-     #  "https://greenville.craigslist.org",
-     #  "https://hiltonhead.craigslist.org",
-     #  "https://myrtlebeach.craigslist.org"
+     #  f"https://charleston.{SITE_NAME}.org",
+     #  f"https://columbia.{SITE_NAME}.org",
+     #  f"https://florencesc.{SITE_NAME}.org",
+     #  f"https://greenville.{SITE_NAME}.org",
+     #  f"https://hiltonhead.{SITE_NAME}.org",
+     #  f"https://myrtlebeach.{SITE_NAME}.org"
      # ],
      # "SD": [
-     #  "https://nesd.craigslist.org",
-     #  "https://csd.craigslist.org",
-     #  "https://rapidcity.craigslist.org",
-     #  "https://siouxfalls.craigslist.org",
-     #  "https://sd.craigslist.org"
+     #  f"https://nesd.{SITE_NAME}.org",
+     #  f"https://csd.{SITE_NAME}.org",
+     #  f"https://rapidcity.{SITE_NAME}.org",
+     #  f"https://siouxfalls.{SITE_NAME}.org",
+     #  f"https://sd.{SITE_NAME}.org"
      # ],
      # "TN": [
-     #  "https://chattanooga.craigslist.org",
-     #  "https://clarksville.craigslist.org",
-     #  "https://cookeville.craigslist.org",
-     #  "https://jacksontn.craigslist.org",
-     #  "https://knoxville.craigslist.org",
-     #  "https://memphis.craigslist.org",
-     #  "https://nashville.craigslist.org",
-     #  "https://tricities.craigslist.org"
+     #  f"https://chattanooga.{SITE_NAME}.org",
+     #  f"https://clarksville.{SITE_NAME}.org",
+     #  f"https://cookeville.{SITE_NAME}.org",
+     #  f"https://jacksontn.{SITE_NAME}.org",
+     #  f"https://knoxville.{SITE_NAME}.org",
+     #  f"https://memphis.{SITE_NAME}.org",
+     #  f"https://nashville.{SITE_NAME}.org",
+     #  f"https://tricities.{SITE_NAME}.org"
      # ],
      # "TX": [
-     #  "https://abilene.craigslist.org",
-     #  "https://amarillo.craigslist.org",
-     #  "https://austin.craigslist.org",
-     #  "https://beaumont.craigslist.org",
-     #  "https://brownsville.craigslist.org",
-     #  "https://collegestation.craigslist.org",
-     #  "https://corpuschristi.craigslist.org",
-     #  "https://dallas.craigslist.org",
-     #  "https://nacogdoches.craigslist.org",
-     #  "https://delrio.craigslist.org",
-     #  "https://elpaso.craigslist.org",
-     #  "https://galveston.craigslist.org",
-     #  "https://houston.craigslist.org",
-     #  "https://killeen.craigslist.org",
-     #  "https://laredo.craigslist.org",
-     #  "https://lubbock.craigslist.org",
-     #  "https://mcallen.craigslist.org",
-     #  "https://odessa.craigslist.org",
-     #  "https://sanangelo.craigslist.org",
-     #  "https://sanantonio.craigslist.org",
-     #  "https://sanmarcos.craigslist.org",
-     #  "https://bigbend.craigslist.org",
-     #  "https://texarkana.craigslist.org",
-     #  "https://texoma.craigslist.org",
-     #  "https://easttexas.craigslist.org",
-     #  "https://victoriatx.craigslist.org",
-     #  "https://waco.craigslist.org",
-     #  "https://wichitafalls.craigslist.org"
+     #  f"https://abilene.{SITE_NAME}.org",
+     #  f"https://amarillo.{SITE_NAME}.org",
+     #  f"https://austin.{SITE_NAME}.org",
+     #  f"https://beaumont.{SITE_NAME}.org",
+     #  f"https://brownsville.{SITE_NAME}.org",
+     #  f"https://collegestation.{SITE_NAME}.org",
+     #  f"https://corpuschristi.{SITE_NAME}.org",
+     #  f"https://dallas.{SITE_NAME}.org",
+     #  f"https://nacogdoches.{SITE_NAME}.org",
+     #  f"https://delrio.{SITE_NAME}.org",
+     #  f"https://elpaso.{SITE_NAME}.org",
+     #  f"https://galveston.{SITE_NAME}.org",
+     #  f"https://houston.{SITE_NAME}.org",
+     #  f"https://killeen.{SITE_NAME}.org",
+     #  f"https://laredo.{SITE_NAME}.org",
+     #  f"https://lubbock.{SITE_NAME}.org",
+     #  f"https://mcallen.{SITE_NAME}.org",
+     #  f"https://odessa.{SITE_NAME}.org",
+     #  f"https://sanangelo.{SITE_NAME}.org",
+     #  f"https://sanantonio.{SITE_NAME}.org",
+     #  f"https://sanmarcos.{SITE_NAME}.org",
+     #  f"https://bigbend.{SITE_NAME}.org",
+     #  f"https://texarkana.{SITE_NAME}.org",
+     #  f"https://texoma.{SITE_NAME}.org",
+     #  f"https://easttexas.{SITE_NAME}.org",
+     #  f"https://victoriatx.{SITE_NAME}.org",
+     #  f"https://waco.{SITE_NAME}.org",
+     #  f"https://wichitafalls.{SITE_NAME}.org"
      # ],
      # "UT": [
-     #  "https://logan.craigslist.org",
-     #  "https://ogden.craigslist.org",
-     #  "https://provo.craigslist.org",
-     #  "https://saltlakecity.craigslist.org",
-     #  "https://stgeorge.craigslist.org"
+     #  f"https://logan.{SITE_NAME}.org",
+     #  f"https://ogden.{SITE_NAME}.org",
+     #  f"https://provo.{SITE_NAME}.org",
+     #  f"https://saltlakecity.{SITE_NAME}.org",
+     #  f"https://stgeorge.{SITE_NAME}.org"
      # ],
      # "VA": [
-     #  "https://charlottesville.craigslist.org",
-     #  "https://danville.craigslist.org",
-     #  "https://easternshore.craigslist.org",
-     #  "https://fredericksburg.craigslist.org",
-     #  "https://harrisonburg.craigslist.org",
-     #  "https://lynchburg.craigslist.org",
-     #  "https://blacksburg.craigslist.org",
-     #  "https://norfolk.craigslist.org",
-     #  "https://richmond.craigslist.org",
-     #  "https://roanoke.craigslist.org",
-     #  "https://swva.craigslist.org",
-     #  "https://winchester.craigslist.org",
-     #  "https://washingtondc.craigslist.org/nva/"
+     #  f"https://charlottesville.{SITE_NAME}.org",
+     #  f"https://danville.{SITE_NAME}.org",
+     #  f"https://easternshore.{SITE_NAME}.org",
+     #  f"https://fredericksburg.{SITE_NAME}.org",
+     #  f"https://harrisonburg.{SITE_NAME}.org",
+     #  f"https://lynchburg.{SITE_NAME}.org",
+     #  f"https://blacksburg.{SITE_NAME}.org",
+     #  f"https://norfolk.{SITE_NAME}.org",
+     #  f"https://richmond.{SITE_NAME}.org",
+     #  f"https://roanoke.{SITE_NAME}.org",
+     #  f"https://swva.{SITE_NAME}.org",
+     #  f"https://winchester.{SITE_NAME}.org",
+     #  f"https://washingtondc.{SITE_NAME}.org/nva/"
      # ],
      # "VT": [
-     #  "https://vermont.craigslist.org/"
+     #  f"https://vermont.{SITE_NAME}.org/"
      # ],
      # "WA": [
-     #  "https://bellingham.craigslist.org",
-     #  "https://kpr.craigslist.org",
-     #  "https://lewiston.craigslist.org",
-     #  "https://moseslake.craigslist.org",
-     #  "https://olympic.craigslist.org",
-     #  "https://pullman.craigslist.org",
-     #  "https://seattle.craigslist.org",
-     #  "https://skagit.craigslist.org",
-     #  "https://spokane.craigslist.org",
-     #  "https://wenatchee.craigslist.org",
-     #  "https://yakima.craigslist.org",
-     #  "https://portland.craigslist.org/clk/"
+     #  f"https://bellingham.{SITE_NAME}.org",
+     #  f"https://kpr.{SITE_NAME}.org",
+     #  f"https://lewiston.{SITE_NAME}.org",
+     #  f"https://moseslake.{SITE_NAME}.org",
+     #  f"https://olympic.{SITE_NAME}.org",
+     #  f"https://pullman.{SITE_NAME}.org",
+     #  f"https://seattle.{SITE_NAME}.org",
+     #  f"https://skagit.{SITE_NAME}.org",
+     #  f"https://spokane.{SITE_NAME}.org",
+     #  f"https://wenatchee.{SITE_NAME}.org",
+     #  f"https://yakima.{SITE_NAME}.org",
+     #  f"https://portland.{SITE_NAME}.org/clk/"
      # ],
      # "WI": [
-     #  "https://appleton.craigslist.org",
-     #  "https://duluth.craigslist.org",
-     #  "https://eauclaire.craigslist.org",
-     #  "https://greenbay.craigslist.org",
-     #  "https://janesville.craigslist.org",
-     #  "https://racine.craigslist.org",
-     #  "https://lacrosse.craigslist.org",
-     #  "https://madison.craigslist.org",
-     #  "https://milwaukee.craigslist.org",
-     #  "https://northernwi.craigslist.org",
-     #  "https://sheboygan.craigslist.org",
-     #  "https://wausau.craigslist.org"
+     #  f"https://appleton.{SITE_NAME}.org",
+     #  f"https://duluth.{SITE_NAME}.org",
+     #  f"https://eauclaire.{SITE_NAME}.org",
+     #  f"https://greenbay.{SITE_NAME}.org",
+     #  f"https://janesville.{SITE_NAME}.org",
+     #  f"https://racine.{SITE_NAME}.org",
+     #  f"https://lacrosse.{SITE_NAME}.org",
+     #  f"https://madison.{SITE_NAME}.org",
+     #  f"https://milwaukee.{SITE_NAME}.org",
+     #  f"https://northernwi.{SITE_NAME}.org",
+     #  f"https://sheboygan.{SITE_NAME}.org",
+     #  f"https://wausau.{SITE_NAME}.org"
      # ],
      # "WV": [
-     #  "https://charlestonwv.craigslist.org",
-     #  "https://martinsburg.craigslist.org",
-     #  "https://huntington.craigslist.org",
-     #  "https://morgantown.craigslist.org",
-     #  "https://wheeling.craigslist.org",
-     #  "https://parkersburg.craigslist.org",
-     #  "https://swv.craigslist.org",
-     #  "https://wv.craigslist.org"
+     #  f"https://charlestonwv.{SITE_NAME}.org",
+     #  f"https://martinsburg.{SITE_NAME}.org",
+     #  f"https://huntington.{SITE_NAME}.org",
+     #  f"https://morgantown.{SITE_NAME}.org",
+     #  f"https://wheeling.{SITE_NAME}.org",
+     #  f"https://parkersburg.{SITE_NAME}.org",
+     #  f"https://swv.{SITE_NAME}.org",
+     #  f"https://wv.{SITE_NAME}.org"
      # ],
      # "WY": [
-     #  "https://wyoming.craigslist.org/"
+     #  f"https://wyoming.{SITE_NAME}.org/"
      # ]
 }
 
 URLS_CAN = {    # 55 unique locations
 
      "barrie, ON": [
-      "https://barrie.craigslist.ca"
+      f"https://barrie.{SITE_NAME}.ca"
      ],
      "belleville, ON": [
-      "https://belleville.craigslist.ca"
+      f"https://belleville.{SITE_NAME}.ca"
      ],
      "brantford-woodstock": [
-      "https://brantford.craigslist.ca"
+      f"https://brantford.{SITE_NAME}.ca"
      ],
      "calgary, AB": [
-      "https://calgary.craigslist.ca"
+      f"https://calgary.{SITE_NAME}.ca"
      ],
      "cariboo, BC": [
-      "https://cariboo.craigslist.ca"
+      f"https://cariboo.{SITE_NAME}.ca"
      ],
      "chatham-kent, ON": [
-      "https://chatham.craigslist.ca"
+      f"https://chatham.{SITE_NAME}.ca"
      ],
      "comox valley, BC": [
-      "https://comoxvalley.craigslist.ca"
+      f"https://comoxvalley.{SITE_NAME}.ca"
      ],
      "cornwall, ON": [
-      "https://cornwall.craigslist.ca"
+      f"https://cornwall.{SITE_NAME}.ca"
      ],
      "edmonton, AB": [
-      "https://edmonton.craigslist.ca"
+      f"https://edmonton.{SITE_NAME}.ca"
      ],
      "fraser valley, BC": [
-      "https://abbotsford.craigslist.ca"
+      f"https://abbotsford.{SITE_NAME}.ca"
      ],
      "ft mcmurray, AB": [
-      "https://ftmcmurray.craigslist.ca"
+      f"https://ftmcmurray.{SITE_NAME}.ca"
      ],
      "guelph, ON": [
-      "https://guelph.craigslist.ca"
+      f"https://guelph.{SITE_NAME}.ca"
      ],
      "halifax, NS": [
-      "https://halifax.craigslist.ca"
+      f"https://halifax.{SITE_NAME}.ca"
      ],
      "hamilton-burlington": [
-      "https://hamilton.craigslist.ca"
+      f"https://hamilton.{SITE_NAME}.ca"
      ],
      "kamloops, BC": [
-      "https://kamloops.craigslist.ca"
+      f"https://kamloops.{SITE_NAME}.ca"
      ],
      "kelowna / okanagan": [
-      "https://kelowna.craigslist.ca"
+      f"https://kelowna.{SITE_NAME}.ca"
      ],
      "kingston, ON": [
-      "https://kingston.craigslist.ca"
+      f"https://kingston.{SITE_NAME}.ca"
      ],
      "kitchener-waterloo-cambridge": [
-      "https://kitchener.craigslist.ca"
+      f"https://kitchener.{SITE_NAME}.ca"
      ],
      "kootenays, BC": [
-      "https://kootenays.craigslist.ca"
+      f"https://kootenays.{SITE_NAME}.ca"
      ],
      "lethbridge, AB": [
-      "https://lethbridge.craigslist.ca"
+      f"https://lethbridge.{SITE_NAME}.ca"
      ],
      "london, ON": [
-      "https://londonon.craigslist.ca"
+      f"https://londonon.{SITE_NAME}.ca"
      ],
      "medicine hat, AB": [
-      "https://hat.craigslist.ca"
+      f"https://hat.{SITE_NAME}.ca"
      ],
      "montreal, QC": [
-      "https://montreal.craigslist.ca"
+      f"https://montreal.{SITE_NAME}.ca"
      ],
      "nanaimo, BC": [
-      "https://nanaimo.craigslist.ca"
+      f"https://nanaimo.{SITE_NAME}.ca"
      ],
      "new brunswick": [
-      "https://newbrunswick.craigslist.ca"
+      f"https://newbrunswick.{SITE_NAME}.ca"
      ],
      "niagara region": [
-      "https://niagara.craigslist.ca"
+      f"https://niagara.{SITE_NAME}.ca"
      ],
      "ottawa-hull-gatineau": [
-      "https://ottawa.craigslist.ca"
+      f"https://ottawa.{SITE_NAME}.ca"
      ],
      "owen sound, ON": [
-      "https://owensound.craigslist.ca"
+      f"https://owensound.{SITE_NAME}.ca"
      ],
      "peace river country": [
-      "https://peace.craigslist.ca"
+      f"https://peace.{SITE_NAME}.ca"
      ],
      "peterborough, ON": [
-      "https://peterborough.craigslist.ca"
+      f"https://peterborough.{SITE_NAME}.ca"
      ],
      "prince edward island": [
-      "https://pei.craigslist.ca"
+      f"https://pei.{SITE_NAME}.ca"
      ],
      "prince george, BC": [
-      "https://princegeorge.craigslist.ca"
+      f"https://princegeorge.{SITE_NAME}.ca"
      ],
      "quebec city": [
-      "https://quebec.craigslist.ca"
+      f"https://quebec.{SITE_NAME}.ca"
      ],
      "red deer, AB": [
-      "https://reddeer.craigslist.ca"
+      f"https://reddeer.{SITE_NAME}.ca"
      ],
      "regina, SK": [
-      "https://regina.craigslist.ca"
+      f"https://regina.{SITE_NAME}.ca"
      ],
      "saguenay, QC": [
-      "https://saguenay.craigslist.ca"
+      f"https://saguenay.{SITE_NAME}.ca"
      ],
      "sarnia, ON": [
-      "https://sarnia.craigslist.ca"
+      f"https://sarnia.{SITE_NAME}.ca"
      ],
      "saskatoon, SK": [
-      "https://saskatoon.craigslist.ca"
+      f"https://saskatoon.{SITE_NAME}.ca"
      ],
      "sault ste marie, ON": [
-      "https://soo.craigslist.ca"
+      f"https://soo.{SITE_NAME}.ca"
      ],
      "sherbrooke, QC": [
-      "https://sherbrooke.craigslist.ca"
+      f"https://sherbrooke.{SITE_NAME}.ca"
      ],
      "skeena-bulkley": [
-      "https://skeena.craigslist.ca"
+      f"https://skeena.{SITE_NAME}.ca"
      ],
      "st john's, NL": [
-      "https://newfoundland.craigslist.ca"
+      f"https://newfoundland.{SITE_NAME}.ca"
      ],
      "sudbury, ON": [
-      "https://sudbury.craigslist.ca"
+      f"https://sudbury.{SITE_NAME}.ca"
      ],
      "sunshine coast, BC": [
-      "https://sunshine.craigslist.ca"
+      f"https://sunshine.{SITE_NAME}.ca"
      ],
      "territories": [
-      "https://territories.craigslist.ca"
+      f"https://territories.{SITE_NAME}.ca"
      ],
      "thunder bay, ON": [
-      "https://thunderbay.craigslist.ca"
+      f"https://thunderbay.{SITE_NAME}.ca"
      ],
      "toronto": [
-      "https://toronto.craigslist.ca"
+      f"https://toronto.{SITE_NAME}.ca"
      ],
      "trois-rivieres, QC": [
-      "https://troisrivieres.craigslist.ca"
+      f"https://troisrivieres.{SITE_NAME}.ca"
      ],
      "vancouver, BC": [
-      "https://vancouver.craigslist.ca"
+      f"https://vancouver.{SITE_NAME}.ca"
      ],
      "victoria, BC": [
-      "https://victoria.craigslist.ca"
+      f"https://victoria.{SITE_NAME}.ca"
      ],
      "whistler / squamish": [
-      "https://whistler.craigslist.ca"
+      f"https://whistler.{SITE_NAME}.ca"
      ],
      "whitehorse, YT": [
-      "https://whitehorse.craigslist.ca"
+      f"https://whitehorse.{SITE_NAME}.ca"
      ],
      "windsor, ON": [
-      "https://windsor.craigslist.ca"
+      f"https://windsor.{SITE_NAME}.ca"
      ],
      "winnipeg, MB": [
-      "https://winnipeg.craigslist.ca"
+      f"https://winnipeg.{SITE_NAME}.ca"
      ],
      "yellowknife, NT": [
-      "https://yellowknife.craigslist.ca"
+      f"https://yellowknife.{SITE_NAME}.ca"
      ]
 }
 
 URLS_UK = {     #27 unique locations
      "aberdeen": [
-      "https://aberdeen.craigslist.co.uk"
+      f"https://aberdeen.{SITE_NAME}.co.uk"
      ],
      "bath, UK": [
-      "https://bath.craigslist.co.uk"
+      f"https://bath.{SITE_NAME}.co.uk"
      ],
      "belfast": [
-      "https://belfast.craigslist.co.uk"
+      f"https://belfast.{SITE_NAME}.co.uk"
      ],
      "birmingham / west mids": [
-      "https://birmingham.craigslist.co.uk"
+      f"https://birmingham.{SITE_NAME}.co.uk"
      ],
      "brighton": [
-      "https://brighton.craigslist.co.uk"
+      f"https://brighton.{SITE_NAME}.co.uk"
      ],
      "bristol": [
-      "https://bristol.craigslist.co.uk"
+      f"https://bristol.{SITE_NAME}.co.uk"
      ],
      "cambridge, UK": [
-      "https://cambridge.craigslist.co.uk"
+      f"https://cambridge.{SITE_NAME}.co.uk"
      ],
      "cardiff / wales": [
-      "https://cardiff.craigslist.co.uk"
+      f"https://cardiff.{SITE_NAME}.co.uk"
      ],
      "coventry, UK": [
-      "https://coventry.craigslist.co.uk"
+      f"https://coventry.{SITE_NAME}.co.uk"
      ],
      "derby, UK": [
-      "https://derby.craigslist.co.uk"
+      f"https://derby.{SITE_NAME}.co.uk"
      ],
      "devon & cornwall": [
-      "https://devon.craigslist.co.uk"
+      f"https://devon.{SITE_NAME}.co.uk"
      ],
      "dundee": [
-      "https://dundee.craigslist.co.uk"
+      f"https://dundee.{SITE_NAME}.co.uk"
      ],
      "east anglia": [
-      "https://norwich.craigslist.co.uk"
+      f"https://norwich.{SITE_NAME}.co.uk"
      ],
      "east midlands": [
-      "https://eastmids.craigslist.co.uk"
+      f"https://eastmids.{SITE_NAME}.co.uk"
      ],
      "edinburgh": [
-      "https://edinburgh.craigslist.co.uk"
+      f"https://edinburgh.{SITE_NAME}.co.uk"
      ],
      "essex, UK": [
-      "https://essex.craigslist.co.uk"
+      f"https://essex.{SITE_NAME}.co.uk"
      ],
      "glasgow": [
-      "https://glasgow.craigslist.co.uk"
+      f"https://glasgow.{SITE_NAME}.co.uk"
      ],
      "hampshire": [
-      "https://hampshire.craigslist.co.uk"
+      f"https://hampshire.{SITE_NAME}.co.uk"
      ],
      "kent, UK": [
-      "https://kent.craigslist.co.uk"
+      f"https://kent.{SITE_NAME}.co.uk"
      ],
      "leeds": [
-      "https://leeds.craigslist.co.uk"
+      f"https://leeds.{SITE_NAME}.co.uk"
      ],
      "liverpool": [
-      "https://liverpool.craigslist.co.uk"
+      f"https://liverpool.{SITE_NAME}.co.uk"
      ],
      "london, UK": [
-      "https://london.craigslist.co.uk"
+      f"https://london.{SITE_NAME}.co.uk"
      ],
      "manchester, UK": [
-      "https://manchester.craigslist.co.uk"
+      f"https://manchester.{SITE_NAME}.co.uk"
      ],
      "newcastle / NE england": [
-      "https://newcastle.craigslist.co.uk"
+      f"https://newcastle.{SITE_NAME}.co.uk"
      ],
      "nottingham, UK": [
-      "https://nottingham.craigslist.co.uk"
+      f"https://nottingham.{SITE_NAME}.co.uk"
      ],
      "oxford, UK": [
-      "https://oxford.craigslist.co.uk"
+      f"https://oxford.{SITE_NAME}.co.uk"
      ],
      "sheffield": [
-      "https://sheffield.craigslist.co.uk"
+      f"https://sheffield.{SITE_NAME}.co.uk"
      ]
 }
