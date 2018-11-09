@@ -1,12 +1,5 @@
-import datetime
-import time
 from clapi import CLFactory
 from wpapi import WPSession
-
-
-# repeat the below at certain time(s) of day
-# datetime setting as variable
-
 
 def main():
     # at 5pm PST:
@@ -44,19 +37,9 @@ def main():
     wp_session.post_new_wp_objects()
     print(f"posted {[post_object.id for post_object in wp_session.wp_post_objects]}")
 
-    # todo
-
-    # cl_factory.die()
-    # wp_factory.die()
 
     # at 5am PST:
     # ping if posts active. if not, delete.
 
 if __name__ == "__main__":
     main()
-
-
-# scrape in timezones?
-
-# listings should be able to be clicked to be removed from the list.
-#     (What happens to the listing at this point? Does it's status get updated in the DB as a new category like "viewed"?)

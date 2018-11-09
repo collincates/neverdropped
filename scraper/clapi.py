@@ -184,3 +184,6 @@ class CLFactory(object):
                 print(f"{rss_object.city_url} has 1 match for {rss_object.make} {rss_object.model} today.")
             else:
                 print(f"{rss_object.city_url} has {len(rss_object.posting_urls)} matches for {rss_object.make} {rss_object.model} today.")
+
+if __name__ == "__main__":
+    pass

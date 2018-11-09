@@ -1,1 +1,1 @@
-python3.6 scraper/main.py
+python3.6 scraper/scrapeposts.py

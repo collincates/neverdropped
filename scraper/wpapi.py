@@ -170,5 +170,4 @@ class WPSession():
                 pass
 
 if __name__ == "__main__":
-    wp = WPSession()
-    wp.ping_posts()
+    pass
