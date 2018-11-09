@@ -1,3 +1,7 @@
+import os
+
+SITE_NAME = os.environ.get('SITE_NAME')
+
 ALL_MAKES = [
     'Aaen',
     'AAR',
