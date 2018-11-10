@@ -3,7 +3,7 @@ import re
 import time
 from bs4 import BeautifulSoup
 import requests
-from constants import URLS_CAN, URLS_UK, URLS_USA, ALL_MAKES
+from constants import URLS_CAN, URLS_UK, URLS_USA
 from queries import QUERIES
 
 
