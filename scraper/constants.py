@@ -21,24 +21,24 @@ URLS_USA = {    # 444 unique locations
      #  f"https://montgomery.{SITE_NAME}.org",
      #  f"https://tuscaloosa.{SITE_NAME}.org"
      # ],
-     "AR": [
-      f"https://fayar.{SITE_NAME}.org",
-      f"https://fortsmith.{SITE_NAME}.org",
-      f"https://jonesboro.{SITE_NAME}.org",
-      f"https://littlerock.{SITE_NAME}.org",
-      f"https://memphis.{SITE_NAME}.org",
-      f"https://texarkana.{SITE_NAME}.org"
-     ],
-     "AZ": [
-      f"https://flagstaff.{SITE_NAME}.org",
-      f"https://mohave.{SITE_NAME}.org",
-      f"https://phoenix.{SITE_NAME}.org",
-      f"https://prescott.{SITE_NAME}.org",
-      f"https://showlow.{SITE_NAME}.org",
-      f"https://sierravista.{SITE_NAME}.org",
-      f"https://tucson.{SITE_NAME}.org",
-      f"https://yuma.{SITE_NAME}.org"
-     ],
+     # "AR": [
+     #  f"https://fayar.{SITE_NAME}.org",
+     #  f"https://fortsmith.{SITE_NAME}.org",
+     #  f"https://jonesboro.{SITE_NAME}.org",
+     #  f"https://littlerock.{SITE_NAME}.org",
+     #  f"https://memphis.{SITE_NAME}.org",
+     #  f"https://texarkana.{SITE_NAME}.org"
+     # ],
+     # "AZ": [
+     #  f"https://flagstaff.{SITE_NAME}.org",
+     #  f"https://mohave.{SITE_NAME}.org",
+     #  f"https://phoenix.{SITE_NAME}.org",
+     #  f"https://prescott.{SITE_NAME}.org",
+     #  f"https://showlow.{SITE_NAME}.org",
+     #  f"https://sierravista.{SITE_NAME}.org",
+     #  f"https://tucson.{SITE_NAME}.org",
+     #  f"https://yuma.{SITE_NAME}.org"
+     # ],
      # "CA": [
      #  f"https://bakersfield.{SITE_NAME}.org",
      #  f"https://chico.{SITE_NAME}.org",
@@ -70,23 +70,23 @@ URLS_USA = {    # 444 unique locations
      #  f"https://visalia.{SITE_NAME}.org",
      #  f"https://yubasutter.{SITE_NAME}.org"
      # ],
-     # "CO": [
-     #  f"https://boulder.{SITE_NAME}.org",
-     #  f"https://cosprings.{SITE_NAME}.org",
-     #  f"https://denver.{SITE_NAME}.org",
-     #  f"https://eastco.{SITE_NAME}.org",
-     #  f"https://fortcollins.{SITE_NAME}.org",
-     #  f"https://rockies.{SITE_NAME}.org",
-     #  f"https://pueblo.{SITE_NAME}.org",
-     #  f"https://westslope.{SITE_NAME}.org"
-     # ],
-     # "CT": [
-     #  f"https://newlondon.{SITE_NAME}.org",
-     #  f"https://hartford.{SITE_NAME}.org",
-     #  f"https://newhaven.{SITE_NAME}.org",
-     #  f"https://nwct.{SITE_NAME}.org",
-     #  f"https://newyork.{SITE_NAME}.org/fct/"
-     # ],
+     "CO": [
+      f"https://boulder.{SITE_NAME}.org",
+      f"https://cosprings.{SITE_NAME}.org",
+      f"https://denver.{SITE_NAME}.org",
+      f"https://eastco.{SITE_NAME}.org",
+      f"https://fortcollins.{SITE_NAME}.org",
+      f"https://rockies.{SITE_NAME}.org",
+      f"https://pueblo.{SITE_NAME}.org",
+      f"https://westslope.{SITE_NAME}.org"
+     ],
+     "CT": [
+      f"https://newlondon.{SITE_NAME}.org",
+      f"https://hartford.{SITE_NAME}.org",
+      f"https://newhaven.{SITE_NAME}.org",
+      f"https://nwct.{SITE_NAME}.org",
+      f"https://newyork.{SITE_NAME}.org/fct/"
+     ],
      # "DE": [
      #  f"https://delaware.{SITE_NAME}.org/"
      # ],
