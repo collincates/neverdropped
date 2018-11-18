@@ -36,7 +36,8 @@ def get_queries():
                 token_uri = TOKEN_URI,
                 revoke_uri = REVOKE_URI,
                 scope=SCOPES,
-                access_type='offline'
+                access_type='offline',
+                approval_prompt='force'
                 )
 
         creds = tools.run_flow(flow, store)
