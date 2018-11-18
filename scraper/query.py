@@ -4,27 +4,39 @@ from httplib2 import Http
 from googleapiclient.discovery import build
 from oauth2client import file, client, tools
 
-SCOPES = 'https://www.googleapis.com/auth/drive.readonly'
-file_id = os.environ.get('QUERY_FILE_ID')
+QUERY_FILE_ID = os.environ.get('QUERY_FILE_ID')
 
 def get_queries():
     store = file.Storage('token.json')
     creds = store.get()
-    # creds = client.Credentials(
+
+   # creds = client.Credentials(
     #     filename=None,
     #     scope=SCOPES,
     #     token_uri="https://www.googleapis.com/oauth2/v3/token",
-    #     client_id="597746796963-kkue5nft1k9l45ehal4o7eoi6frvbhps.apps.googleusercontent.com",
-    #     client_secret="JiWdWK8lUA1GQOSMTyIOMVKY",
     #     refresh_token="1/fsmi-AZajUNN-OvFd1K5ijkfQ2M-6SLw3Q1JkldQA0I"
     # )
+
     if not creds or creds.invalid:
-        flow = client.flow_from_clientsecrets(os.environ.get('GOOGLE_APPLICATION_CREDENTIALS'), scope=SCOPES)
+
+        CLIENT_ID = os.environ.get('CLIENT_ID')
+        CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
+        REDIRECT_URI = os.environ.get('REDIRECT_URI')
+        SCOPES = 'https://www.googleapis.com/auth/drive.readonly'
+
+        flow = client.OAuth2WebServerFlow(
+                client_id=CLIENT_ID,
+                client_secret=CLIENT_SECRET,
+                redirect_uri=REDIRECT_URI,
+                scope=SCOPES,
+                )
+
         creds = tools.run_flow(flow, store, access_type='offline')
+
     service = build('drive', 'v3', http=creds.authorize(Http()))
 
     # results = service.files().get_media(fileId=file_id).execute()
-    results = service.files().export(fileId=file_id, mimeType='text/plain').execute()
+    results = service.files().export(fileId=QUERY_FILE_ID, mimeType='text/plain').execute()
     decoded = results.decode('utf-8-sig')
     json_results = json.loads(decoded)
 
