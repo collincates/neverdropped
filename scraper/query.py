@@ -21,6 +21,7 @@ def get_queries():
     AUTH_URI = os.environ.get('AUTH_URI')
     TOKEN_URI = os.environ.get('TOKEN_URI')
     REVOKE_URI = os.environ.get('REVOKE_URI')
+    REFRESH_TOKEN = os.environ.get('REFRESH_TOKEN')
 
     SCOPES = 'https://www.googleapis.com/auth/drive.readonly'
 
@@ -44,14 +45,14 @@ def get_queries():
          token=None,
          client_id=CLIENT_ID,
          client_secret=CLIENT_SECRET,
+         token_uri=TOKEN_URI,
+         scopes=SCOPES,
+         refresh_token=REFRESH_TOKEN
          # redirect_uri=REDIRECT_URI,
          # auth_uri = AUTH_URI,
-         token_uri = TOKEN_URI,
          # revoke_uri = REVOKE_URI,
-         scopes=SCOPES,
          # access_type='offline',
          # prompt='consent',
-         refresh_token="1/fsmi-AZajUNN-OvFd1K5ijkfQ2M-6SLw3Q1JkldQA0I"
     )
     print(type(credentials))
     service = build('drive', 'v3', credentials=credentials)#http=credentials.authorize(Http()))
