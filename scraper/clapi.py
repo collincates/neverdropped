@@ -4,11 +4,9 @@ import time
 from bs4 import BeautifulSoup
 import requests
 from constants import URLS_CAN, URLS_UK, URLS_USA
-from queries import QUERIES
-
+from query import get_queries
 
 random_sleep = round(uniform(6, 8), 1)
-
 
 class CLPostObject(object):
 
@@ -124,9 +122,15 @@ class CLFactory(object):
 
         This method does not hit the CL server. No sleep is required.
 
-        # get back to this if speed in an issue # search_terms = lambda make, model: [f"{make} {model}" for model in [model for model in models for [(make, models) for make, models in QUERIES.items()]]
+        # get back to this if speed in an issue
+        # search_terms = lambda make, model:
+        # [f"{make} {model}" for model in
+        # [model for model in models for
+        # [(make, models) for make, models in QUERIES.items()]]
 
         """
+        QUERIES = get_queries()
+
         for make, models in QUERIES.items():
             for model in models:
 
@@ -186,4 +190,7 @@ class CLFactory(object):
                 print(f"{rss_object.city_url} has {len(rss_object.posting_urls)} matches for {rss_object.make} {rss_object.model} today.")
 
 if __name__ == "__main__":
-    pass
+    factory = CLFactory()
+    factory.make_rss_feeds()
+    for rss in factory.rss_objects_to_scrape:
+        print(rss.rss_url)

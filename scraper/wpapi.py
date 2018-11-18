@@ -1,10 +1,10 @@
-import os
-import sys
 import datetime
+import os
 from random import uniform
+import sys
 import time
-import requests
 from bs4 import BeautifulSoup
+import requests
 from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import taxonomies, media
