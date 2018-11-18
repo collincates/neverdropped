@@ -22,12 +22,19 @@ def get_queries():
         CLIENT_ID = os.environ.get('CLIENT_ID')
         CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
         REDIRECT_URI = os.environ.get('REDIRECT_URI')
+        AUTH_URI = os.environ.get('AUTH_URI')
+        TOKEN_URI = os.environ.get('TOKEN_URI')
+        REVOKE_URI = os.environ.get('REVOKE_URI')
+
         SCOPES = 'https://www.googleapis.com/auth/drive.readonly'
 
         flow = client.OAuth2WebServerFlow(
                 client_id=CLIENT_ID,
                 client_secret=CLIENT_SECRET,
                 redirect_uri=REDIRECT_URI,
+                auth_uri = AUTH_URI,
+                token_uri = TOKEN_URI,
+                revoke_uri = REVOKE_URI,
                 scope=SCOPES,
                 access_type='offline'
                 )
