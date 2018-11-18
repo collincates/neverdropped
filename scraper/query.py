@@ -29,9 +29,10 @@ def get_queries():
                 client_secret=CLIENT_SECRET,
                 redirect_uri=REDIRECT_URI,
                 scope=SCOPES,
+                access_type='offline'
                 )
 
-        creds = tools.run_flow(flow, store, access_type='offline')
+        creds = tools.run_flow(flow, store)
 
     service = build('drive', 'v3', http=creds.authorize(Http()))
 
