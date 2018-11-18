@@ -37,7 +37,7 @@ def get_queries():
                 revoke_uri = REVOKE_URI,
                 scope=SCOPES,
                 access_type='offline',
-                approval_prompt='force'
+                prompt='consent'
                 )
 
         creds = tools.run_flow(flow, store)
