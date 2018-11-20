@@ -6,7 +6,7 @@ import time
 from bs4 import BeautifulSoup
 import requests
 from wordpress_xmlrpc import Client, WordPressPost
-from wordpress_xmlrpc.compat.xmlrpc_client import Binary
+from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods.taxonomies import DeleteTerm, GetTerms
 from wordpress_xmlrpc.methods.media import GetMediaLibrary, UploadFile
 from wordpress_xmlrpc.methods.posts import NewPost, GetPost, GetPosts, DeletePost
@@ -68,7 +68,7 @@ class WPSession():
                         'name': '{}_{:02d}.jpg'.format(object.cl_id, object.image_links.index(img) + 1),
                         'type': 'image/jpeg',
                         # 'date': 'test',
-                        'bits': Binary(requests.get(img).content),
+                        'bits': xmlrpc_client.Binary(requests.get(img).content),
                         }
 
                         response = self.connection.call(UploadFile(data))
