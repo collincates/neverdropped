@@ -6,9 +6,11 @@ import time
 from bs4 import BeautifulSoup
 import requests
 from wordpress_xmlrpc import Client, WordPressPost
-from wordpress_xmlrpc.compat import xmlrpc_client
-from wordpress_xmlrpc.methods import taxonomies, media
-from wordpress_xmlrpc.methods.posts import NewPost, GetPost, GetPosts
+from wordpress_xmlrpc.compat.xmlrpc_client import Binary
+from wordpress_xmlrpc.methods.taxonomies import DeleteTerm, GetTerms
+from wordpress_xmlrpc.methods.media import GetMediaLibrary, UploadFile
+from wordpress_xmlrpc.methods.posts import NewPost, GetPost, GetPosts, DeletePost
+
 
 random_sleep = round(uniform(6, 8), 1)
 
@@ -30,7 +32,7 @@ class WPSession():
 
     def get_all_tags(self):
         try:
-            self.tags = self.connection.call(taxonomies.GetTerms('post_tag'))
+            self.tags = self.connection.call(GetTerms('post_tag'))
         except:
             print("A connection has not been established.")
             sys.exit(0)
@@ -66,10 +68,10 @@ class WPSession():
                         'name': '{}_{:02d}.jpg'.format(object.cl_id, object.image_links.index(img) + 1),
                         'type': 'image/jpeg',
                         # 'date': 'test',
-                        'bits': xmlrpc_client.Binary(requests.get(img).content),
+                        'bits': Binary(requests.get(img).content),
                         }
 
-                        response = self.connection.call(media.UploadFile(data))
+                        response = self.connection.call(UploadFile(data))
 
                         if thumbnailed == False:
                             attachment_id = response['id']
@@ -141,7 +143,6 @@ class WPSession():
         for post_object in self.wp_post_objects:
                 post_object.id = self.connection.call(NewPost(post_object))
 
-
     def ping_posts(self):
         # get pages in batches of 20
         # offset = 0
@@ -164,10 +165,76 @@ class WPSession():
             if soup_ping.find('div', class_='removed'):
                 print(soup.find('h2').getText().split('\n')[0])
                 self.connection.call(DeletePost(post))
+                # add stuff here
+
+
                 print(f'Deleted {post.title}. It was at {original_posting_url}.')
             else:
                 print(f'{post.title} is still active at {original_posting_url}.')
                 pass
+
+    def cleanup():
+        """
+        Check database trash records. (post_status='trash').
+        Drop trashed tags, media, and posts from database.
+
+        """
+
+        # Call all trashed posts, active metadata tags, and photos
+        trash_posts = self.connection.call(GetPosts({'post_status': ['trash'], 'number': 1000}))
+        active_tag_ids = set([term.id for term in [term for term in [post.terms for post in self.connection.call(GetPosts())] for term in term]])
+        active_media_library = self.connection.call(GetMediaLibrary({'number': 1000}))
+
+        # Drop old tags from database
+        tag_ids_to_drop = []
+
+        for post in reversed(trash_posts):
+            # Bypass Active tags, 'Uncategorized' tags, and cl_id tags
+            # Append all other tags to list of terms_to_drop
+            for term in post.terms:
+                if term.id in active_tag_ids:
+                    continue
+                elif term.id == '1':
+                    continue
+                elif term.name == [meta['value'] for meta in post.custom_fields if meta['key'] == 'cl_id'][0]:
+                    continue
+                else:
+                    tag_ids_to_drop.append(term.id)
+
+        for id in set(tag_ids_to_drop):
+            self.connection.call(DeleteTerm('post_tag', id))
+            print(f'Deleted this tag from database:\t\t{id}')
+
+
+        # Drop old photos from database
+        media_to_drop = []
+
+        for photo in active_media_library:
+            #  SHOULD THIS BE SET TO COMPARE MEDIA TO ACTIVE POSTS? CASTS WIDER NET.
+            if str(photo.parent) in [posting.id for posting in trash_posts]:
+                media_to_drop.append(photo)
+
+        for photo in reversed(media_to_drop):
+            self.connection.call(DeletePost(f'{photo.id}'))
+            print(f'Deleted this photo from database:\t{photo}')
+
+
+        # Delete trashed posts from database
+        posts_to_drop = []
+
+        for post in trash_posts:
+            if post.id == '1':
+                continue
+            else:
+                posts_to_drop.append(post)
+
+        for post in posts_to_drop:
+            self.connection.call(DeletePost(post.id))
+            print(f'Deleted this post from database:\t{post.title}')
+
+
+        print(f'Cleanup is done as of:\t\t{datetime.datetime.now().strftime("%c")}!')
+
 
 if __name__ == "__main__":
     pass

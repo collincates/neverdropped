@@ -35,7 +35,7 @@ def main():
     wp_session.make_new_wp_objects_from(cl_factory.new_cl_postings)
     # print(wp_session.wp_post_objects)
     wp_session.post_new_wp_objects()
-    print(f"posted {[post_object.id for post_object in wp_session.wp_post_objects]}")
+    print(f"Posted {[post_object.id for post_object in wp_session.wp_post_objects]}")
 
 
     # at 5am PST:
