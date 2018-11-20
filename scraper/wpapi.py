@@ -173,7 +173,7 @@ class WPSession():
                 print(f'{post.title} is still active at {original_posting_url}.')
                 pass
 
-    def cleanup():
+    def cleanup(self):
         """
         Check database trash records. (post_status='trash').
         Drop trashed tags, media, and posts from database.
