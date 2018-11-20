@@ -233,7 +233,7 @@ class WPSession():
             print(f'Deleted this post from database:\t{post.title}')
 
 
-        print(f'Cleanup is done as of:\t\t{datetime.datetime.now().strftime("%c")}!')
+        print(f'\nCleanup is done as of:\t\t\t{datetime.datetime.now().strftime("%c")}\n')
 
 
 if __name__ == "__main__":
