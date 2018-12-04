@@ -223,6 +223,7 @@ class WPSession():
             for term in post.terms:
                 if term.id in active_tag_ids:
                     continue
+                # Bypass 'Uncategorized' tags with id='1'
                 elif term.id == '1':
                     continue
                 elif term.name == [meta['value'] for meta in post.custom_fields if meta['key'] == 'cl_id'][0]:
@@ -232,7 +233,7 @@ class WPSession():
 
         for tag in set(tag_ids_to_drop):
             self.connection.call(DeleteTerm('post_tag', tag.id))
-            print(f'Deleted this tag from database:\t\tID: {id}\tTag: {tag}')
+            print(f'Deleted this tag from database:\t\tID: {tag.id}\tTag: {tag}')
 
 
         # Drop old photos from database
@@ -242,7 +243,7 @@ class WPSession():
             #  SHOULD THIS BE SET TO COMPARE MEDIA TO ACTIVE POSTS? CASTS WIDER NET.
             if photo.title[:-7] in [term.name for terms in [posting.terms for posting in trash_posts] for term in terms]:
                 media_to_drop.append(photo)
-                print(f'Staged photo {photo} for deletion.')
+                print(f'Staged this photo for deletion:\t{photo}')
 
         for photo in reversed(media_to_drop):
             self.connection.call(DeletePost(f'{photo.id}'))
