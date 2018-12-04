@@ -195,7 +195,7 @@ class WPSession():
             soup_ping = BeautifulSoup(ping_post.text, 'html.parser')
 
             if soup_ping.find('div', class_='removed'):
-                print(soup.find('h2').getText().split('\n')[0])
+                print(soup_ping.find('h2').getText().split('\n')[0])
                 self.connection.call(DeletePost(post))
                 print(f'Deleted {post.title}. It was at {original_posting_url}.')
 
