@@ -196,12 +196,12 @@ class WPSession():
 
             if soup_ping.find('div', class_='removed'):
                 print(soup_ping.find('h2').getText().split('\n')[0])
-                self.connection.call(DeletePost(post))
+                self.connection.call(DeletePost(post.id))
                 print(f'Deleted {post.title}. It was at {original_posting_url}.')
 
             else:
                 print(f'{post.title} is still active at {original_posting_url}.')
-                pass
+
 
     def cleanup(self):
         """
@@ -228,11 +228,11 @@ class WPSession():
                 elif term.name == [meta['value'] for meta in post.custom_fields if meta['key'] == 'cl_id'][0]:
                     continue
                 else:
-                    tag_ids_to_drop.append(term.id)
+                    tag_ids_to_drop.append(term)
 
-        for id in set(tag_ids_to_drop):
-            self.connection.call(DeleteTerm('post_tag', id))
-            print(f'Deleted this tag from database:\t\t{id}')
+        for tag in set(tag_ids_to_drop):
+            self.connection.call(DeleteTerm('post_tag', tag.id))
+            print(f'Deleted this tag from database:\t\tID: {id}\tTag: {tag}')
 
 
         # Drop old photos from database
@@ -240,8 +240,9 @@ class WPSession():
 
         for photo in active_media_library:
             #  SHOULD THIS BE SET TO COMPARE MEDIA TO ACTIVE POSTS? CASTS WIDER NET.
-            if str(photo.parent) in [posting.id for posting in trash_posts]:
+            if photo.title[:-7] in [term.name for terms in [posting.terms for posting in trash_posts] for term in terms]:
                 media_to_drop.append(photo)
+                print(f'Staged photo {photo} for deletion.')
 
         for photo in reversed(media_to_drop):
             self.connection.call(DeletePost(f'{photo.id}'))
