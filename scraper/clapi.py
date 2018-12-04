@@ -9,10 +9,12 @@ from query import get_queries
 random_sleep = round(uniform(6, 8), 1)
 
 class CLPostObject(object):
+    """
+    Create object to hold all details from a CL posting as instance attributes.
 
+    """
     def __init__(self, orig_url, make, model): # ,country, state, county, city):
         self.orig_url = orig_url
-
         self.make = make
         self.model = model
         self.cl_id = None
@@ -20,12 +22,10 @@ class CLPostObject(object):
         self.title = None
         self.price = None
         self.location = None
-
         # self.country = country    implement to pass along for tags
         # self.state = state        implement to pass along for tags
         # self.county = county      implement to pass along for tags
         # self.city = city          implement to pass along for tags
-
         self.cl_tags_from_author = None
         self.body_text = None
         self.when_posted = None
@@ -35,7 +35,7 @@ class CLPostObject(object):
 
     def parse(self):
         """
-        Parse info from CL post and assign data as PostObject() instance attributes
+        Parse info from CL post and assign data as PostObject() instance attributes.
 
         -!- HITS SERVER, NEEDS SLEEP -!-
 
@@ -43,14 +43,15 @@ class CLPostObject(object):
 
         time.sleep(random_sleep)
 
+        # Request CL posting HTML.
         cl_posting = requests.get(self.orig_url)
         soup = BeautifulSoup(cl_posting.text, 'html.parser')
 
-
+        # Set instance attributes for each necessary item.
         self.cl_id = soup.find('div', class_='postinginfos') \
                             .find('p', class_='postinginfo') \
                                 .getText().lstrip("post id: ")
-
+        # Original CL ID
         self.__name__ = self.cl_id
 
         # Title
@@ -98,6 +99,11 @@ class CLPostObject(object):
 
 
 class CLRSSFeed(object):
+    """
+    Creat object to hold RSS Feed information for a given search location.
+    We
+
+    """
     def __init__(self, city_url, make, model):
         self.city_url = city_url
         # self.country = country    implement to pass along for tags
@@ -151,11 +157,19 @@ class CLFactory(object):
 
     def get_new_cl_posts_from_rss_feeds(self, compare_to=None):
         """
-        Append all new CL posting URLs from all CL RSS feed object.
+        Append only new CL posting URLs by comparing any new CL ID's
+        to those already present in the database.
+
+        Parameters:
+            compare_to (list): List of CL IDs that are already in the database.
+                Defaults to 'None', and should instead be passed from the tags
+                present in your WordPress session. (wp_session.tags)
 
         -!- HITS SERVER, NEEDS SLEEP -!-
 
         """
+
+        # Gather all posting URLS from each of our RSS Feeds.
         self.rss_objects_to_scrape = self.rss_objects_to_scrape
         for rss_object in reversed(self.rss_objects_to_scrape):
             time.sleep(random_sleep)
@@ -164,10 +178,8 @@ class CLFactory(object):
             rss_object.posting_urls = [list_item['rdf:resource'] \
                         for list_item in soup.find_all('rdf:li')]
 
-            # Reduce pings to CL by skipping posts that are  in the WP DB.
-            # count = 0 # testone
+            # Reduce pings to CL by skipping posts that are in the WP DB.
             for url in reversed(rss_object.posting_urls):
-                # if count < 1: # testone
                 cl_id = re.split("(\d+).html$", url)[1]
 
                 if cl_id in [tag.name for tag in compare_to]:
@@ -178,7 +190,6 @@ class CLFactory(object):
                     print(f"Parsing {cl_id}.")
                     self.new_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
                     print(f"Finished parsing {cl_id}.")
-                        # count += 1 # testone
 
             # print(f"{rss_object.city_url}, {rss_object.posting_urls} from rss_object.")
             if len(rss_object.posting_urls) == 0:

@@ -6,7 +6,13 @@ from google.oauth2.credentials import Credentials
 
 
 def get_queries():
-    """Return JSON object of query terms from remote doc storage"""
+    """
+    Retrieve query terms from remote doc storage. Return JSON object of terms.
+
+    (The purpose of this is to have a remote, editable document to which the
+    admin can make adjustments and have real-time updates to the query terms.)
+
+    """
 
     #AUTH_URI = os.environ.get('AUTH_URI')
     CLIENT_ID = os.environ.get('CLIENT_ID')
