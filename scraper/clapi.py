@@ -123,12 +123,12 @@ class CLFactory(object):
     def make_rss_feeds(self):
         # todo: locations to search as arguments? UK=True, USA=True, CAN=True ??
         """
-        Concatenate CL URLS from module 'constants' with QUERIES RSS urls.
+        Concatenate CL URLS in module 'constants' with QUERIES RSS urls.
         Append all CLRSSFeed objects to this instance of CLFactory().
 
         This method does not hit the CL server. No sleep is required.
 
-        # get back to this if speed/scale in an issue
+        # get back to this if speed in an issue
         # search_terms = lambda make, model:
         # [f"{make} {model}" for model in
         # [model for model in models for
@@ -158,7 +158,7 @@ class CLFactory(object):
     def get_new_cl_posts_from_rss_feeds(self, compare_to=None):
         """
         Append only new CL posting URLs by comparing any new CL ID's
-        to those already present in the database from previous inserts.
+        to those already present in the database.
 
         Parameters:
             compare_to (list): List of CL IDs that are already in the database.
