@@ -13,7 +13,7 @@ def main():
     print("started wp session")
     cl_factory = CLFactory()
     cl_factory.make_rss_feeds()
-    cl_factory.get_new_cl_posts_from_rss_feeds()#compare_to=wp_session.tags)
+    cl_factory.get_new_cl_posts_from_rss_feeds(compare_to=wp_session.tags)
     wp_session.make_new_wp_objects_from(cl_factory.new_cl_postings)
     wp_session.post_new_wp_objects()
     print(f"Posted {[post_object.id for post_object in wp_session.wp_post_objects]}")

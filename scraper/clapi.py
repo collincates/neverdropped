@@ -155,15 +155,15 @@ class CLFactory(object):
                 #         self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
 
 
-    def get_new_cl_posts_from_rss_feeds(self, compare_to=wp_session.tags):
+    def get_new_cl_posts_from_rss_feeds(self, compare_to=None):
         """
         Append only new CL posting URLs by comparing any new CL ID's
         to those already present in the database from previous inserts.
 
         Parameters:
             compare_to (list): List of CL IDs that are already in the database.
-                Defaults to [wp_session.tags] which is passed from
-                the current WordPress session.
+                Defaults to 'None', and should instead be passed from the tags
+                present in your WordPress session. (wp_session.tags)
 
         -!- HITS SERVER, NEEDS SLEEP -!-
 
