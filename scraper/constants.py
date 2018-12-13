@@ -1,4 +1,7 @@
 import os
+from random import uniform
+
+RANDOM_SLEEP = round(uniform(6, 8), 1)
 
 SITE_NAME = os.environ.get('SITE_NAME')
 

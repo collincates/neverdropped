@@ -1,6 +1,5 @@
 import datetime
 import os
-from random import uniform
 import sys
 import time
 from bs4 import BeautifulSoup
@@ -10,9 +9,7 @@ from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods.taxonomies import DeleteTerm, GetTerms
 from wordpress_xmlrpc.methods.media import GetMediaLibrary, UploadFile
 from wordpress_xmlrpc.methods.posts import NewPost, GetPost, GetPosts, DeletePost
-
-
-random_sleep = round(uniform(6, 8), 1)
+from scraper.constants import RANDOM_SLEEP
 
 
 class WPSession():
@@ -88,7 +85,7 @@ class WPSession():
 
                     for img in object.image_links:
 
-                        time.sleep(random_sleep)
+                        time.sleep(RANDOM_SLEEP)
 
                         data = {
                         'name': '{}_{:02d}.jpg'.format(object.cl_id, object.image_links.index(img) + 1),
@@ -189,7 +186,7 @@ class WPSession():
         pub_and_draft_posts = self.connection.call(GetPosts({'post_status': ['publish', 'draft'], 'number': 1000}))
 
         for post in reversed(pub_and_draft_posts):
-            time.sleep(random_sleep)
+            time.sleep(RANDOM_SLEEP)
             original_posting_url = [meta['value'] for meta in post.custom_fields if meta['key'] == 'original_posting_url'][0]
             ping_post = requests.get(original_posting_url)
             soup_ping = BeautifulSoup(ping_post.text, 'html.parser')

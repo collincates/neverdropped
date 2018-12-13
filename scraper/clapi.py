@@ -1,12 +1,9 @@
-from random import uniform
 import re
 import time
 from bs4 import BeautifulSoup
 import requests
-from constants import URLS_CAN, URLS_UK, URLS_USA
-from query import get_queries
-
-random_sleep = round(uniform(6, 8), 1)
+from scraper.constants import RANDOM_SLEEP, URLS_CAN, URLS_UK, URLS_USA
+from scraper.query import get_queries
 
 class CLPostObject(object):
     """
@@ -41,7 +38,7 @@ class CLPostObject(object):
 
         """
 
-        time.sleep(random_sleep)
+        time.sleep(RANDOM_SLEEP)
 
         # Request CL posting HTML.
         cl_posting = requests.get(self.orig_url)
@@ -172,7 +169,7 @@ class CLFactory(object):
         # Gather all posting URLS from each of our RSS Feeds.
         self.rss_objects_to_scrape = self.rss_objects_to_scrape
         for rss_object in reversed(self.rss_objects_to_scrape):
-            time.sleep(random_sleep)
+            time.sleep(RANDOM_SLEEP)
             request_rss = requests.get(rss_object.rss_url)
             soup = BeautifulSoup(request_rss.text, 'html.parser')
             rss_object.posting_urls = [list_item['rdf:resource'] \
