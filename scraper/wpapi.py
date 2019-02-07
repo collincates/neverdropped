@@ -1,4 +1,5 @@
 import datetime
+import logging
 import os
 import sys
 import time
@@ -11,6 +12,14 @@ from wordpress_xmlrpc.methods.media import GetMediaLibrary, UploadFile
 from wordpress_xmlrpc.methods.posts import NewPost, GetPost, GetPosts, DeletePost
 from scraper.constants import RANDOM_SLEEP
 
+
+logging.basicConfig(
+    filename='../scraper.log',
+    filemode='a',
+    format='%(asctime)s - %(module)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d - %H:%M:%S',
+    level=logging.INFO
+)
 
 class WPSession():
     """
@@ -35,19 +44,19 @@ class WPSession():
     def connect(self):
         """Create a database connection by passing environment variables."""
         self.connection = Client(self.url, self.user, self.password)
-        print("Connection established.")
+        logging.info("Connection established.")
 
     def get_all_tags(self):
         """Retrieve all currently existing metadata tags from the database."""
         try:
             self.tags = self.connection.call(GetTerms('post_tag'))
         except:
-            print("A connection has not been established.")
+            logging.info("A connection was not established. Exiting.")
             sys.exit(0)
 
     def make_new_wp_objects_from(self, cl_post_objects, post_status='draft'):
         """
-        Convert CL objects into WordPress objects and structure object attributes
+        Convert CL objects into WordPress objects and format object attributes
         to prepare for database insertion.
 
         Parameters:
@@ -67,7 +76,7 @@ class WPSession():
         for object in cl_post_objects:
 
             if object.cl_id in tag_list:
-                print('{} already in database'.format(object.cl_id))
+                logging.info(f'{object.cl_id} already in database')
                 pass
             # If it's a new cl_id, create a blog post for it.
             else:
@@ -88,10 +97,13 @@ class WPSession():
                         time.sleep(RANDOM_SLEEP)
 
                         data = {
-                        'name': '{}_{:02d}.jpg'.format(object.cl_id, object.image_links.index(img) + 1),
-                        'type': 'image/jpeg',
-                        # 'date': 'test',
-                        'bits': xmlrpc_client.Binary(requests.get(img).content),
+                            'name': '{}_{:02d}.jpg'.format(
+                                object.cl_id, object.image_links.index(img) + 1
+                            ),
+                            'type': 'image/jpeg',
+                            'bits': xmlrpc_client.Binary(
+                                requests.get(img).content
+                            ),
                         }
 
                         response = self.connection.call(UploadFile(data))
@@ -115,29 +127,29 @@ class WPSession():
                 post.id = None
                 post.post_status = post_status
                 post.date = datetime.datetime.strptime(
-                                object.when_posted, '%Y-%m-%dT%H:%M:%S%z'
+                    object.when_posted, '%Y-%m-%dT%H:%M:%S%z'
                 )
                 post.title = object.title
                 post.thumbnail = attachment_id
 
                 post.content = (
-                                f"{object.price}\n" \
-                                f"{object.location}\n\n" \
-                                f"{object.body_text}\n" \
-                                f"{' '.join(html_formatted_links)}\n\n"
-                                f"Original Post: <a href={object.orig_url}>{object.orig_url}</a>"
+                    f"{object.price}\n" \
+                    f"{object.location}\n\n" \
+                    f"{object.body_text}\n" \
+                    f"{' '.join(html_formatted_links)}\n\n"
+                    f"Original Post: <a href={object.orig_url}>{object.orig_url}</a>"
                 )
 
                 post.terms_names = {
                     'category': [object.make],
                     'post_tag': [
-                                item for sublist in [
-                                                    [object.cl_id],
-                                                    [object.model],
-                                                    object.cl_tags_from_author
-                                                    ]
-                                for item in sublist
-                                ],
+                            item for sublist in [
+                                                [object.cl_id],
+                                                [object.model],
+                                                object.cl_tags_from_author
+                                                ]
+                            for item in sublist
+                            ],
 
                 }
 
@@ -150,10 +162,6 @@ class WPSession():
                     {'key': 'title', 'value': object.title},
                     {'key': 'price', 'value': object.price},
                     {'key': 'location', 'value': object.location},
-                    # {'key': 'country', 'value': object.country},
-                    # {'key': 'state', 'value': object.state},
-                    # {'key': 'county', 'value': object.county},
-                    # {'key': 'city', 'value': object.city},
                     {'key': 'cl_tags_from_author', 'value': object.cl_tags_from_author},
                     {'key': 'body_text', 'value': object.body_text},
                     {'key': 'when_posted', 'value': object.when_posted},
@@ -172,18 +180,15 @@ class WPSession():
         Visit original CL URL for each post currently in the WordPress database.
         For any expired, sold, or removed CL posts, set that object's post_status='trash'.
         """
-        # get pages in batches of 20
-        # offset = 0
-        # increment = 20
-        # while True:
-        #     pub_and_draft_posts = self.connection.call(GetPosts({'post_status': ['publish', 'draft'], 'number': increment, 'offset': offset}))
-        #         # if len(posts) == 0:
-        #                 break  # no more posts returned
-        #         for post in pub_and_draft_posts:
-        #                 do_something(post)
-        #         offset = offset + increment
 
-        pub_and_draft_posts = self.connection.call(GetPosts({'post_status': ['publish', 'draft'], 'number': 1000}))
+        pub_and_draft_posts = self.connection.call(
+            GetPosts(
+                {
+                'post_status': ['publish', 'draft'],
+                'number': 1000
+                }
+            )
+        )
 
         for post in reversed(pub_and_draft_posts):
             time.sleep(RANDOM_SLEEP)
@@ -192,12 +197,12 @@ class WPSession():
             soup_ping = BeautifulSoup(ping_post.text, 'html.parser')
 
             if soup_ping.find('div', class_='removed'):
-                print(soup_ping.find('h2').getText().split('\n')[0])
+                logging.info(soup_ping.find('h2').getText().split('\n')[0])
                 self.connection.call(DeletePost(post.id))
-                print(f'Deleted {post.title}. It was at {original_posting_url}.')
+                logging.info(f'Deleted {post.title}. It was at {original_posting_url}.')
 
             else:
-                print(f'{post.title} is still active at {original_posting_url}.')
+                logging.info(f'{post.title} is still active at {original_posting_url}.')
 
 
     def cleanup(self):
@@ -207,9 +212,28 @@ class WPSession():
         """
 
         # Call all trashed posts, active metadata tags, and photos
-        trash_posts = self.connection.call(GetPosts({'post_status': ['trash'], 'number': 1000}))
-        active_tag_ids = set([term.id for term in [term for term in [post.terms for post in self.connection.call(GetPosts())] for term in term]])
-        active_media_library = self.connection.call(GetMediaLibrary({'number': 1000}))
+        trash_posts = self.connection.call(
+            GetPosts(
+                {
+                'post_status': ['trash'],
+                'number': 1000
+                }
+            )
+        )
+
+        active_tag_ids = set(
+            [term.id for term in
+                [term for term in
+                    [post.terms for post in self.connection.call(GetPosts())]
+                for term in term]
+            ]
+        )
+
+        active_media_library = self.connection.call(
+            GetMediaLibrary(
+                {'number': 1000}
+            )
+        )
 
         # Drop old tags from database
         tag_ids_to_drop = []
@@ -230,21 +254,20 @@ class WPSession():
 
         for tag in set(tag_ids_to_drop):
             self.connection.call(DeleteTerm('post_tag', tag.id))
-            print(f'Deleted this tag from database:\t\tID: {tag.id}\tTag: {tag}')
+            logging.info(f'Deleted this tag from database:\t\tID: {tag.id}\tTag: {tag}')
 
 
         # Drop old photos from database
         media_to_drop = []
 
         for photo in active_media_library:
-            #  SHOULD THIS BE SET TO COMPARE MEDIA TO ACTIVE POSTS? CASTS WIDER NET.
             if photo.title[:-7] in [term.name for terms in [posting.terms for posting in trash_posts] for term in terms]:
                 media_to_drop.append(photo)
-                print(f'Staged this photo for deletion:\t{photo}')
+                logging.info(f'Staged this photo for deletion:\t{photo}')
 
         for photo in reversed(media_to_drop):
             self.connection.call(DeletePost(f'{photo.id}'))
-            print(f'Deleted this photo from database:\t{photo}')
+            logging.info(f'Deleted this photo from database:\t{photo}')
 
 
         # Delete trashed posts from database
@@ -259,9 +282,9 @@ class WPSession():
 
         for post in posts_to_drop:
             self.connection.call(DeletePost(post.id))
-            print(f'Deleted this post from database:\t{post.title}')
+            logging.info(f'Deleted this post from database:\t{post.title}')
 
-        print(f'\nCleanup is done as of:\t\t\t{datetime.datetime.now().strftime("%c")}\n')
+        logging.info(f'\nCleanup is done as of:\t\t\t{datetime.datetime.now().strftime("%c")}\n')
 
 if __name__ == "__main__":
     pass

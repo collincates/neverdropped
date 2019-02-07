@@ -12,6 +12,20 @@ def get_queries():
     (The purpose of this is to have a remote, editable document to which the
     admin can make adjustments and have real-time updates to the query terms.)
 
+    Example JSON snippet from editable doc showing motorcycle make/model layout:
+
+            {
+              "Honda":[
+                "CB350",
+                "CL350",
+                "Motocompo"
+              ]
+              "Yamaha":[
+                "TMAX",
+                "VMAX",
+                "YBR125"
+              ]
+            }
     """
 
     #AUTH_URI = os.environ.get('AUTH_URI')
@@ -49,5 +63,3 @@ def get_queries():
 
 if __name__ == '__main__':
     QUERIES = get_queries()
-    print(QUERIES)
-    print(type(QUERIES))

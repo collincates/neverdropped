@@ -52,7 +52,7 @@ class WPSessionTest(unittest.TestCase):
         print(self.session.tags)
         self.assertEqual(
             len(self.session.tags),
-            int(3 * len(self.session.wp_post_objects)) #3 tags added by default
+            (3 * len(self.session.wp_post_objects)) #3 tags added by default
         )
 
     def test_post_new_wp_objects(self):

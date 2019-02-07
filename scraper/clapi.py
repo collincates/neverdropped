@@ -1,3 +1,4 @@
+import logging
 import re
 import time
 from bs4 import BeautifulSoup
@@ -5,12 +6,21 @@ import requests
 from scraper.constants import RANDOM_SLEEP, URLS_CAN, URLS_UK, URLS_USA
 from scraper.query import get_queries
 
+
+logging.basicConfig(
+    filename='../scraper.log',
+    filemode='a',
+    format='%(asctime)s - %(module)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d - %H:%M:%S',
+    level=logging.INFO
+)
+
 class CLPostObject(object):
     """
     Create object to hold all details from a CL posting as instance attributes.
 
     """
-    def __init__(self, orig_url, make, model): # ,country, state, county, city):
+    def __init__(self, orig_url, make, model):
         self.orig_url = orig_url
         self.make = make
         self.model = model
@@ -19,10 +29,6 @@ class CLPostObject(object):
         self.title = None
         self.price = None
         self.location = None
-        # self.country = country    implement to pass along for tags
-        # self.state = state        implement to pass along for tags
-        # self.county = county      implement to pass along for tags
-        # self.city = city          implement to pass along for tags
         self.cl_tags_from_author = None
         self.body_text = None
         self.when_posted = None
@@ -32,7 +38,8 @@ class CLPostObject(object):
 
     def parse(self):
         """
-        Parse info from CL post and assign data as PostObject() instance attributes.
+        Parse info from CL post and assign data
+        as PostObject() instance attributes.
 
         -!- HITS SERVER, NEEDS SLEEP -!-
 
@@ -72,13 +79,20 @@ class CLPostObject(object):
         # Tags that were input by author of original post
         try:
             cl_meta_area = soup.find('div', class_='mapAndAttrs')('span')
-            self.cl_tags_from_author = [' '.join(text) for text in [[text for text in field.stripped_strings] for field in cl_meta_area]]
+            self.cl_tags_from_author = [
+                ' '.join(text) for text in [
+                [text for text in field.stripped_strings]
+                for field in cl_meta_area]
+            ]
         except AttributeError:
-            self.cl_tags_from_author = "No CL meta fields were entered by post author into original post."
+            self.cl_tags_from_author = "No CL meta fields exist in original post."
 
         # Body Text
         try:
-            self.body_text = soup.find(id='postingbody').text.replace("\n\nQR Code Link to This Post\n\n\n", '') #contents[2::]
+            self.body_text = soup.find(
+                id='postingbody').text.replace(
+                    "\n\nQR Code Link to This Post\n\n\n", ''
+                )
         except AttributeError:
             self.body_text = "No body text in original post."
 
@@ -88,9 +102,15 @@ class CLPostObject(object):
 
         # Images. Posting either has zero, one, or multiple images.
         if soup.find('figure', class_='iw multiimage'):
-            self.image_links = [a['href'] for a in soup.find_all('a', class_='thumb', href=True)]
+            self.image_links = [
+                a['href'] for a in
+                soup.find_all('a', class_='thumb', href=True)
+            ]
         elif soup.find('figure', class_='iw oneimage'):
-            self.image_links = [soup.find('div', class_='swipe-wrap').find('img')['src']]
+            self.image_links = [
+                soup.find('div', class_='swipe-wrap')
+                .find('img')['src']
+            ]
         else:
             self.image_links = []
 
@@ -98,15 +118,9 @@ class CLPostObject(object):
 class CLRSSFeed(object):
     """
     Creat object to hold RSS Feed information for a given search location.
-    We
-
     """
     def __init__(self, city_url, make, model):
         self.city_url = city_url
-        # self.country = country    implement to pass along for tags
-        # self.state = state        implement to pass along for tags
-        # self.county = county      implement to pass along for tags
-        # self.city = city          implement to pass along for tags
         self.make = make
         self.model = model
         self.rss_url = f"{self.city_url}/search/mcy?format=rss&query={self.make.lower()}+{self.model.lower()}*"
@@ -118,7 +132,6 @@ class CLFactory(object):
         self.new_cl_postings = []
 
     def make_rss_feeds(self):
-        # todo: locations to search as arguments? UK=True, USA=True, CAN=True ??
         """
         Concatenate CL URLS in module 'constants' with QUERIES RSS urls.
         Append all CLRSSFeed objects to this instance of CLFactory().
@@ -133,24 +146,28 @@ class CLFactory(object):
 
         """
         QUERIES = get_queries()
-
+        SEARCH_AREAS = ['USA', 'UK', 'CAN']
         for make, models in QUERIES.items():
             for model in models:
 
-                # if USA == True:
-                for area_name, area_urls in URLS_USA.items():
-                    for city_url in area_urls:
-                        self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
-                # if UK == True:
-                # for area_name, area_urls in URLS_UK.items():
-                #     for city_url in area_urls:
-                #         self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
-                #
-                # # if CAN == True:
-                # for area_name, area_urls in URLS_CAN.items():
-                #     for city_url in area_urls:
-                #         self.rss_objects_to_scrape.append(CLRSSFeed(city_url, make, model))
-
+                if 'USA' in SEARCH_AREAS:
+                    for area_name, area_urls in URLS_USA.items():
+                        for city_url in area_urls:
+                            self.rss_objects_to_scrape.append(
+                                CLRSSFeed(city_url, make, model)
+                            )
+                if 'UK' in SEARCH_AREAS:
+                    for area_name, area_urls in URLS_UK.items():
+                        for city_url in area_urls:
+                            self.rss_objects_to_scrape.append(
+                                CLRSSFeed(city_url, make, model)
+                            )
+                if 'CAN' in SEARCH_AREAS:
+                    for area_name, area_urls in URLS_CAN.items():
+                        for city_url in area_urls:
+                            self.rss_objects_to_scrape.append(
+                                CLRSSFeed(city_url, make, model)
+                            )
 
     def get_new_cl_posts_from_rss_feeds(self, compare_to=None):
         """
@@ -180,22 +197,23 @@ class CLFactory(object):
                 cl_id = re.split("(\d+).html$", url)[1]
 
                 if cl_id in [tag.name for tag in compare_to]:
-                    print(f"{cl_id} was already seen.")
+                    logging.info(f"{cl_id} was already seen.")
                     rss_object.posting_urls.remove(url)
 
                 else:
-                    print(f"Parsing {cl_id}.")
-                    self.new_cl_postings.append(CLPostObject(url, rss_object.make, rss_object.model))
-                    print(f"Finished parsing {cl_id}.")
+                    logging.info(f"Parsing {cl_id}.")
+                    self.new_cl_postings.append(
+                        CLPostObject(url, rss_object.make, rss_object.model)
+                    )
+                    logging.info(f"Finished parsing {cl_id}.")
 
-            # print(f"{rss_object.city_url}, {rss_object.posting_urls} from rss_object.")
             if len(rss_object.posting_urls) == 0:
-                print(f"{rss_object.city_url} has no matches for {rss_object.make} {rss_object.model} today.")
+                logging.info(f"{rss_object.city_url} has no matches for {rss_object.make} {rss_object.model} today.")
                 self.rss_objects_to_scrape.remove(rss_object)
             elif len(rss_object.posting_urls) == 1:
-                print(f"{rss_object.city_url} has 1 match for {rss_object.make} {rss_object.model} today.")
+                logging.info(f"{rss_object.city_url} has 1 match for {rss_object.make} {rss_object.model} today.")
             else:
-                print(f"{rss_object.city_url} has {len(rss_object.posting_urls)} matches for {rss_object.make} {rss_object.model} today.")
+                logging.info(f"{rss_object.city_url} has {len(rss_object.posting_urls)} matches for {rss_object.make} {rss_object.model} today.")
 
 if __name__ == "__main__":
     factory = CLFactory()
